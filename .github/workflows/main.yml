@@ -21,8 +21,10 @@ jobs:
         directory: lib/core/
         file_name: .env
     - run: flutter test --coverage
-    - name: Upload coverage
-      run: curl -s https://codecov.io/bash
-      shell: bash
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v3
+      env:
+       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
         
        
