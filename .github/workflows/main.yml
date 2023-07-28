@@ -15,7 +15,7 @@ jobs:
       with: 
        channel: master
     - name: Create .env file
-      uses: SpicyPizza/create-envfile@v2.0
+      uses: SpicyPizza/create-envfile@v2.0.2
       with:
         envkey_UNSPLASH_API_KEY: ""
         directory: lib/core/env/
