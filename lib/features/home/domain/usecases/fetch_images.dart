@@ -1,16 +1,16 @@
 import 'package:dartz/dartz.dart';
 import 'package:unplash_sample/core/error/error.dart';
 import 'package:unplash_sample/core/usecases/usecase.dart';
-import 'package:unplash_sample/features/home/domain/entities/image_list_response.dart';
+import 'package:unplash_sample/features/home/domain/entities/image.dart';
 import 'package:unplash_sample/features/home/domain/respositories/unsplash_repository.dart';
 
-class FetchImages extends Usecase<ImageListResponse, FetchImageParams> {
+class FetchImages extends Usecase<List<UnsplashImage>, FetchImageParams> {
   final UnsplashRepository repository;
 
   FetchImages({required this.repository});
 
   @override
-  Future<Either<CustomError, ImageListResponse>> call(FetchImageParams params) async {
+  Future<Either<CustomError, List<UnsplashImage>>> call(FetchImageParams params) async {
     return await repository.fetchImages(params.page);
   }
 }

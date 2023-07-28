@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 
-class ImageListResponse extends Equatable {
+class UnsplashImage extends Equatable {
   final String id;
   final String url;
 
-  const ImageListResponse({
+  const UnsplashImage({
     required this.id,
     required this.url,
   });
