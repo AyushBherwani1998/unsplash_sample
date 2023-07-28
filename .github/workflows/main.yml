@@ -15,8 +15,9 @@ jobs:
       with: 
        channel: master
     - name: Create .env file
-      run: |
-        cat > lib/core/env/.env <<EOF
-        UNSPLASH_API_KEY = ""
-        EOF
+      uses: SpicyPizza/create-envfile@v2.0
+      with:
+        UNSPLASH_API_KEY: ""
+        directory: lib/core/env/
+        file_name: .env
     - run: flutter test
