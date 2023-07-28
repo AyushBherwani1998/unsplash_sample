@@ -5,7 +5,6 @@ comment:
   require_base: false
   require_head: true  
 ignore:
-  - '**/domain/repositories/'
   - '**/*.g.dart'
   - '**/entities/'
   - '/lib/core/error/'
