@@ -5,7 +5,8 @@ import 'package:unplash_sample/features/home/domain/entities/image.dart';
 import 'package:unplash_sample/features/home/domain/respositories/unsplash_repository.dart';
 import 'package:unplash_sample/features/home/domain/usecases/fetch_images.dart';
 
-import '../../../core/mocks/unsplash_repository_mock.dart';
+import '../../../../core/mocks/unsplash_repository_mock.dart';
+
 
 void main() {
   late final FetchImages fetchImages;
