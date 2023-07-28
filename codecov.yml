@@ -1,0 +1,12 @@
+comment:                  
+  layout: " diff, flags, files"
+  behavior: default
+  require_changes: false  
+  require_base: false
+  require_head: true  
+ignore:
+  - '**/repositories/'
+  - '**/*.g.dart'
+  - '**/entities/'
+  - '/lib/core/error/'
+  - '/lib/core/usecases/'
