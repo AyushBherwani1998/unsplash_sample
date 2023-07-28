@@ -8,5 +8,5 @@ ignore:
   - '**/repositories/'
   - '**/*.g.dart'
   - '**/entities/'
-  - '/lib/core/error/'
-  - '/lib/core/usecases/'
+  - 'lib/core/error/'
+  - 'lib/core/usecases/'
