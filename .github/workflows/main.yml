@@ -10,14 +10,16 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Create .env file
-        run: |
-          cat > assets/.env <<EOF
-          UNSPLASH_API_KEY = ""
-          EOF
+        
   flutter_tests:
     name: Drive tests
     runs-on: ubuntu-latest
     steps:
+    - name: Create .env file
+      run: |
+        cat > lib/core/env/.env <<EOF
+        UNSPLASH_API_KEY = ""
+        EOF
     - uses: actions/checkout@v3
     - uses: subosito/flutter-action@v2
       with: 
