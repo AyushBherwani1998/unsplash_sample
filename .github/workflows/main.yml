@@ -10,13 +10,13 @@ jobs:
     name: Drive tests
     runs-on: macos-latest
     steps:
+    - uses: actions/checkout@v3
+    - uses: subosito/flutter-action@v2
+      with: 
+       channel: master
     - name: Create .env file
       run: |
         cat > lib/core/env/.env <<EOF
         UNSPLASH_API_KEY = ""
         EOF
-    - uses: actions/checkout@v3
-    - uses: subosito/flutter-action@v2
-      with: 
-       channel: master
     - run: flutter test
