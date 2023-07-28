@@ -1,0 +1,15 @@
+name: main action
+on:
+ push:
+    branches: [main]
+ pull_request:
+    branches: [main]
+ workflow_dispatch:
+jobs:
+  flutter_tests:
+    name: Drive tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: subosito/flutter-action@v2
+    - run: flutter test
