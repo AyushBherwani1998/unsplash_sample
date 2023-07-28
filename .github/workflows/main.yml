@@ -6,6 +6,14 @@ on:
     branches: [main]
  workflow_dispatch:
 jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Create .env file
+        run: |
+          cat > assets/.env <<EOF
+          UNSPLASH_API_KEY = ""
+          EOF
   flutter_tests:
     name: Drive tests
     runs-on: ubuntu-latest
