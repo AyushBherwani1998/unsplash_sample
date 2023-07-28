@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:unplash_sample/core/error/error.dart';
 import 'package:unplash_sample/core/usecases/usecase.dart';
 import 'package:unplash_sample/features/home/domain/entities/image.dart';
-import 'package:unplash_sample/features/home/domain/respositories/unsplash_repository.dart';
+import 'package:unplash_sample/features/home/domain/repositories/unsplash_repository.dart';
 
 class FetchImages extends Usecase<List<UnsplashImage>, FetchImageParams> {
   final UnsplashRepository repository;
