@@ -8,3 +8,5 @@ abstract class CustomError extends Equatable {
   @override
   List<Object?> get props => [properties];
 }
+
+class ServerError extends CustomError {}
