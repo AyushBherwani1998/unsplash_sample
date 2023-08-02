@@ -39,5 +39,18 @@ void main() {
 
       expect(unsplashImageModel.images, response);
     });
+
+    test('should return ServerError upon failure', () async {
+      when(() => dioMock.get(any())).thenThrow(
+        DioException(requestOptions: RequestOptions()),
+      );
+
+      final fetchImageFunction = unsplashRemoteDataSourceImpl.fetchImages;
+
+      expect(
+        () => fetchImageFunction.call(1),
+        throwsA(const TypeMatcher<Exception>()),
+      );
+    });
   });
 }
