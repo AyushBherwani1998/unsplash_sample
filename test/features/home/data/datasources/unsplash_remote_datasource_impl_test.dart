@@ -40,7 +40,7 @@ void main() {
       expect(unsplashImageModel.images, response);
     });
 
-    test('should return ServerError upon failure', () async {
+    test('should return Exception upon failure', () async {
       when(() => dioMock.get(any())).thenThrow(
         DioException(requestOptions: RequestOptions()),
       );
