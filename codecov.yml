@@ -9,3 +9,4 @@ ignore:
   - '**/entities/'
   - 'lib/core/error/'
   - 'lib/core/usecases/'
+  - 'dependency_injection.dart'
