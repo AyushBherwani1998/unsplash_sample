@@ -16,14 +16,14 @@ void main() {
       expect(unsplashImageModel, isA<UnsplashImage>());
     });
 
-    test('UnsplashImageModel is created from json string', () {
-      final map = Map<String, dynamic>.from(
+    test('UnsplashImageModelList is created from json string', () {
+      final map = List<Map<String, dynamic>>.from(
         jsonDecode(fixture('image_model_fixture.json')),
       );
 
-      final result = UnsplashImageModel.fromJson(map);
+      final result = UnsplashImageListModel.fromJson(map);
 
-      expect(result, unsplashImageModel);
+      expect(result.images, [unsplashImageModel]);
     });
   });
 }

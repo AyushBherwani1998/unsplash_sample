@@ -11,14 +11,16 @@ import '../../../../fixtures/fixture_reader.dart';
 
 void main() {
   late final DioMock dioMock;
-  late final UnsplashImageModel unsplashImageModel;
+  late final UnsplashImageListModel unsplashImageModel;
   late final UnsplashRemoteDataSourceImpl unsplashRemoteDataSourceImpl;
-  late final Map<String, dynamic> jsonMap;
+  late final dynamic jsonData;
 
   setUpAll(() {
     dioMock = DioMock();
-    jsonMap = jsonDecode(fixture('image_model_fixture.json'));
-    unsplashImageModel = UnsplashImageModel.fromJson(jsonMap);
+    jsonData = jsonDecode(fixture('image_model_fixture.json'));
+    unsplashImageModel = UnsplashImageListModel.fromJson(
+      List<Map<String, dynamic>>.from(jsonData),
+    );
 
     unsplashRemoteDataSourceImpl = UnsplashRemoteDataSourceImpl(dioMock);
   });
@@ -29,14 +31,13 @@ void main() {
         return Response(
           requestOptions: RequestOptions(),
           statusCode: 200,
-          data: [jsonMap],
+          data: jsonData,
         );
       });
 
       final response = await unsplashRemoteDataSourceImpl.fetchImages(1);
 
-      expect([unsplashImageModel], response);
+      expect(unsplashImageModel.images, response);
     });
   });
-  
 }
