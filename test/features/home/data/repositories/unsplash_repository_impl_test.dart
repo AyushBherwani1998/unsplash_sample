@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:unplash_sample/core/error/error.dart';
 import 'package:unplash_sample/features/home/data/datasources/unsplash_remote_datasource.dart';
+import 'package:unplash_sample/features/home/data/models/image_model.dart';
 import 'package:unplash_sample/features/home/data/repositories/unsplash_repository_impl.dart';
 import 'package:unplash_sample/features/home/domain/entities/image.dart';
 
@@ -11,7 +12,7 @@ void main() {
   group("Unsplash repository implementation tests", () {
     late final UnsplashRemoteDataSource remoteDataSourceMock;
     late final UnsplashRepositoryImpl unsplashRepositoryImpl;
-    const UnsplashImage unsplashImage = UnsplashImage(id: "id", url: "url");
+    const unsplashImage = UnsplashImageModel(id: "id", url: "url");
 
     setUpAll(() {
       remoteDataSourceMock = UnsplashRemoteDataSourceMock();
