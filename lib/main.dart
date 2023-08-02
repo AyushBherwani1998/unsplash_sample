@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:unplash_sample/dependency_injection.dart';
 
 void main() {
+  DependencyInjection.initialize();
   runApp(const MyApp());
 }
 
