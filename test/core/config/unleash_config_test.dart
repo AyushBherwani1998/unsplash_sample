@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:unleash/unleash.dart';
+import 'package:unleash_proxy_client_flutter/unleash_proxy_client_flutter.dart';
 import 'package:unplash_sample/core/config/unleash_config.dart';
 import 'package:unplash_sample/core/utils/string_constants.dart';
 
@@ -8,11 +8,11 @@ import '../mocks/unleash_mock.dart';
 
 void main() {
   late final UnleashConfig unleashConifg;
-  late final Unleash unleashMock;
+  late final UnleashClient unleashMock;
 
   group('UnleashConfig tests', () {
     setUpAll(() {
-      unleashMock = UnleashMock();
+      unleashMock = UnleashClientMock();
       unleashConifg = UnleashConfigImp(unleashMock);
     });
 
