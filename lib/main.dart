@@ -5,8 +5,8 @@ import 'package:unplash_sample/features/home/presentation/pages/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  DependencyInjection.initialize();
   await dotenv.load(fileName: "./lib/core/.env");
+  await DependencyInjection.initialize();
   runApp(const MyApp());
 }
 
