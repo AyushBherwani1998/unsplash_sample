@@ -4,6 +4,7 @@ import 'package:unplash_sample/core/widgets/error_tile.dart';
 import 'package:unplash_sample/dependency_injection.dart';
 import 'package:unplash_sample/features/home/domain/usecases/fetch_images.dart';
 import 'package:unplash_sample/features/home/presentation/bloc/unsplash_image_bloc.dart';
+import 'package:unplash_sample/features/home/presentation/widgets/image_gridview_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -43,7 +44,7 @@ class _HomePageState extends State<HomePage> {
               message: state.errorMessage,
             );
           } else if (state is UnsplashImageLoadedState) {
-            return Container();
+            return ImageGridViewWidget(images: state.images);
           }
           return const Center(
             child: CircularProgressIndicator.adaptive(),
