@@ -40,11 +40,11 @@ void main() {
 
       await tester.pumpWidget(pumpMaterialApp(const HomePage()));
 
-      final errorTile = find.byType(ErrorTile);
-      expect(errorTile, findsOneWidget);
+      await tester.tap(find.byType(ErrorTile));
+      await tester.pumpAndSettle();
 
-      final errorMessage = find.text(serverErrorMessage);
-      expect(errorMessage, findsOneWidget);
+      expect(find.byType(ErrorTile), findsOneWidget);
+      expect(find.text(serverErrorMessage), findsOneWidget);
     });
 
     testWidgets(
