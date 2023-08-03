@@ -1,4 +1,4 @@
-import 'package:unleash/unleash.dart';
+import 'package:unleash_proxy_client_flutter/unleash_proxy_client_flutter.dart';
 import 'package:unplash_sample/core/utils/string_constants.dart';
 
 abstract class UnleashConfig {
@@ -6,10 +6,10 @@ abstract class UnleashConfig {
 }
 
 class UnleashConfigImp extends UnleashConfig {
-  final Unleash unleash;
+  final UnleashClient unleash;
 
   UnleashConfigImp(this.unleash);
 
   @override
-  bool get isDetailsPageEnabled => unleash.isEnabled(isImageDetailsEnabled, defaultValue: false);
+  bool get isDetailsPageEnabled => unleash.isEnabled(isImageDetailsEnabled);
 }

@@ -1,4 +1,4 @@
 import 'package:mocktail/mocktail.dart';
-import 'package:unleash/unleash.dart';
+import 'package:unleash_proxy_client_flutter/unleash_proxy_client_flutter.dart';
 
-class UnleashMock extends Mock implements Unleash {}
+class UnleashClientMock extends Mock implements UnleashClient {}
