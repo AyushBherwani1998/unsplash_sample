@@ -14,7 +14,6 @@ class UnsplashImageBloc extends Bloc<UnsplashImageEvent, UnsplashImageState> {
     on<UnsplashImageEvent>((event, emit) async {
       if (event is FetchImageEvent) {
         emit(UnsplashImageLoadingState());
-
         final imagesEither = await fetchImages(event.params);
         imagesEither.fold((error) {
           emit(const UnsplashImageErrorState(serverErrorMessage));

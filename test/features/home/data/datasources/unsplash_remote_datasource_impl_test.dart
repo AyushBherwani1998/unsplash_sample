@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:unplash_sample/features/home/data/datasources/unsplash_remote_datasource.dart';
@@ -9,13 +10,16 @@ import 'package:unplash_sample/features/home/data/models/image_model.dart';
 import '../../../../core/mocks/dio_mock.dart';
 import '../../../../fixtures/fixture_reader.dart';
 
-void main() {
+void main() async {
+  TestWidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: './lib/core/.env');
+
   late final DioMock dioMock;
   late final UnsplashImageListModel unsplashImageModel;
   late final UnsplashRemoteDataSourceImpl unsplashRemoteDataSourceImpl;
   late final dynamic jsonData;
 
-  setUpAll(() {
+  setUpAll(() async {
     dioMock = DioMock();
     jsonData = jsonDecode(fixture('image_model_fixture.json'));
     unsplashImageModel = UnsplashImageListModel.fromJson(
@@ -27,7 +31,13 @@ void main() {
 
   group('UnsplashRemoteDataSourceImpl tests', () {
     test('should return UnsplashImageModel upon success', () async {
-      when(() => dioMock.get(any())).thenAnswer((invocation) async {
+      when(
+        () => dioMock.get(
+          any(),
+          queryParameters: any(named: "queryParameters"),
+          options: any(named: "options"),
+        ),
+      ).thenAnswer((invocation) async {
         return Response(
           requestOptions: RequestOptions(),
           statusCode: 200,
@@ -41,7 +51,11 @@ void main() {
     });
 
     test('should return Exception upon failure', () async {
-      when(() => dioMock.get(any())).thenThrow(
+      when(() => dioMock.get(
+            any(),
+            queryParameters: any(named: "queryParameters"),
+            options: any(named: "options"),
+          )).thenThrow(
         DioException(requestOptions: RequestOptions()),
       );
 
