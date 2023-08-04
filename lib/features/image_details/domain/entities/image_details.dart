@@ -5,7 +5,7 @@ class ImageDetails extends Equatable {
   final String description;
   final int downloads;
   final int likes;
-  final List<Map<String, String>> tags;
+  final List<Map<String, dynamic>> tags;
 
   const ImageDetails({
     required this.url,
