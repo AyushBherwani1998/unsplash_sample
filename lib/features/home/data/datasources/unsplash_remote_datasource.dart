@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:unplash_sample/core/utils/string_constants.dart';
 import 'package:unplash_sample/features/home/data/models/image_model.dart';
 import 'package:unplash_sample/features/home/domain/entities/image.dart';
 
@@ -33,7 +34,7 @@ class UnsplashRemoteDataSourceImpl implements UnsplashRemoteDataSource {
 
         return imageModelListModel.images;
       }
-      throw Exception("Something went wrong");
+      throw Exception(serverErrorMessage);
     } catch (e, _) {
       log(e.toString(), stackTrace: _);
       rethrow;
