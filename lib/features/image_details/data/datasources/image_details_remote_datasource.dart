@@ -16,7 +16,7 @@ class ImageDetailsRemoteDataSourceImpl implements ImageDetailsRemoteDataSource {
   Future<ImageDetailsModel> fetchImageDetails(String id) async {
     try {
       final response = await dio.get(
-        'https://api.unsplash.com/photos/:$id',
+        'https://api.unsplash.com/photos/$id',
         options: Options(
           headers: {
             "Authorization": "Client-ID ${dotenv.env["UNSPLASH_API_KEY"]}"

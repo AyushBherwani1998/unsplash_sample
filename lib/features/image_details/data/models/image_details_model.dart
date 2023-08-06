@@ -6,16 +6,14 @@ class ImageDetailsModel extends ImageDetails {
     required super.description,
     required super.downloads,
     required super.likes,
-    required super.tags,
   });
 
   factory ImageDetailsModel.fromJson(Map<String, dynamic> json) {
     return ImageDetailsModel(
       url: json['urls']['raw'],
-      description: json['description'],
+      description: json['description'] ?? "Description not available!",
       downloads: int.parse(json['downloads'].toString()),
       likes: int.parse(json['likes'].toString()),
-      tags: List<Map<String, dynamic>>.from(json['tags']),
     );
   }
 }

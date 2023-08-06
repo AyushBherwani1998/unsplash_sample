@@ -26,7 +26,7 @@ void main() {
 
     setUpAll(() {
       bloc = UnsplashImageBlocMock();
-      MockDependencyInjection.initialize(bloc);
+      MockDependencyInjection.initialize(unsplashImageBloc: bloc);
     });
 
     tearDownAll(() {
