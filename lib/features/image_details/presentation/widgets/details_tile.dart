@@ -14,11 +14,13 @@ class DetailsTile extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          imageDetails.description,
-          style: textTheme.bodyMedium,
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
+        Expanded(
+          child: Text(
+            imageDetails.description,
+            style: textTheme.bodyMedium,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
         const SizedBox(width: 8),
         Row(
