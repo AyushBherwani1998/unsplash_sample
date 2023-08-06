@@ -15,11 +15,6 @@ void main() {
       description: "A man drinking a coffee.",
       downloads: 1345,
       likes: 24,
-      tags: [
-        {"title": "man"},
-        {"title": "drinking"},
-        {"title": "coffee"}
-      ],
     );
   });
 

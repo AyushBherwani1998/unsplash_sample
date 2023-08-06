@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -8,8 +7,6 @@ import 'package:unplash_sample/core/utils/string_constants.dart';
 import 'package:unplash_sample/features/image_details/data/datasources/image_details_remote_datasource.dart';
 import 'package:unplash_sample/features/image_details/data/models/image_details_model.dart';
 import 'package:unplash_sample/features/image_details/data/repositories/image_details_repository_impl.dart';
-import 'package:unplash_sample/features/image_details/domain/entities/image_details.dart';
-import 'package:unplash_sample/features/image_details/domain/repositories/image_details_repository.dart';
 
 import '../../../../core/mocks/image_details_remote_datasource.dart';
 import '../../../../fixtures/fixture_reader.dart';

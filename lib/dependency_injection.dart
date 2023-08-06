@@ -8,6 +8,11 @@ import 'package:unplash_sample/features/home/data/repositories/unsplash_reposito
 import 'package:unplash_sample/features/home/domain/repositories/unsplash_repository.dart';
 import 'package:unplash_sample/features/home/domain/usecases/fetch_images.dart';
 import 'package:unplash_sample/features/home/presentation/bloc/unsplash_image_bloc.dart';
+import 'package:unplash_sample/features/image_details/data/datasources/image_details_remote_datasource.dart';
+import 'package:unplash_sample/features/image_details/data/repositories/image_details_repository_impl.dart';
+import 'package:unplash_sample/features/image_details/domain/repositories/image_details_repository.dart';
+import 'package:unplash_sample/features/image_details/domain/usecases/fetch_image_details.dart';
+import 'package:unplash_sample/features/image_details/presentation/bloc/image_details_bloc.dart';
 
 class DependencyInjection {
   DependencyInjection._();
@@ -16,13 +21,21 @@ class DependencyInjection {
 
   static Future<void> initialize() async {
     getIt.registerFactory(() => UnsplashImageBloc(getIt()));
+    getIt.registerFactory(() => ImageDetailsBloc(getIt()));
 
+    getIt.registerLazySingleton(() => FetchImageDetails(getIt()));
     getIt.registerLazySingleton(() => FetchImages(repository: getIt()));
 
+    getIt.registerLazySingleton<ImageDetailsRepository>(
+      () => ImageDetailsRepositoryIml(getIt()),
+    );
     getIt.registerLazySingleton<UnsplashRepository>(
       () => UnsplashRepositoryImpl(getIt()),
     );
 
+    getIt.registerLazySingleton<ImageDetailsRemoteDataSource>(
+      () => ImageDetailsRemoteDataSourceImpl(getIt()),
+    );
     getIt.registerLazySingleton<UnsplashRemoteDataSource>(
       () => UnsplashRemoteDataSourceImpl(getIt()),
     );
@@ -32,7 +45,7 @@ class DependencyInjection {
       clientKey: dotenv.env["UNLEASH_API_KEY"] as String,
       appName: 'unplash_demo',
     );
-    
+
     await unleash.start();
 
     getIt.registerLazySingleton(() => unleash);

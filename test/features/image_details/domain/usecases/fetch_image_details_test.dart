@@ -20,7 +20,6 @@ void main() {
       description: "description",
       downloads: 1,
       likes: 1,
-      tags: [],
     );
   });
 
