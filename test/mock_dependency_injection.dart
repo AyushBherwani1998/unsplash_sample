@@ -1,6 +1,9 @@
 import 'package:get_it/get_it.dart';
+import 'package:unplash_sample/core/config/unleash_config.dart';
 import 'package:unplash_sample/features/home/presentation/bloc/unsplash_image_bloc.dart';
 import 'package:unplash_sample/features/image_details/presentation/bloc/image_details_bloc.dart';
+
+import 'core/mocks/unelash_conifg_mock.dart';
 
 class MockDependencyInjection {
   MockDependencyInjection._();
@@ -11,6 +14,7 @@ class MockDependencyInjection {
     UnsplashImageBloc? unsplashImageBloc,
     ImageDetailsBloc? imageDetailsBloc,
   }) {
+    getIt.registerLazySingleton<UnleashConfig>(() => UnleashConfigMock());
     if (unsplashImageBloc != null) {
       getIt.registerFactory<UnsplashImageBloc>(() => unsplashImageBloc);
     }

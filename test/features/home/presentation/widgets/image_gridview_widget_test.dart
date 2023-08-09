@@ -7,11 +7,13 @@ import 'package:unplash_sample/features/home/data/models/image_model.dart';
 import 'package:unplash_sample/features/home/presentation/widgets/image_gridview_widget.dart';
 
 import '../../../../fixtures/fixture_reader.dart';
+import '../../../../mock_dependency_injection.dart';
 
 void main() {
   late final UnsplashImageListModel unsplashImageListModel;
 
   setUp(() {
+    MockDependencyInjection.initialize();
     unsplashImageListModel =
         UnsplashImageListModel.fromJson(List<Map<String, dynamic>>.from(
       jsonDecode(fixture('image_model_fixture.json')),
