@@ -49,7 +49,7 @@ class DependencyInjection {
     await unleash.start();
 
     getIt.registerLazySingleton(() => unleash);
-    getIt.registerLazySingleton(() => UnleashConfigImp(getIt()));
+    getIt.registerLazySingleton<UnleashConfig>(() => UnleashConfigImpl(getIt()));
 
     getIt.registerLazySingleton(() => Dio());
   }

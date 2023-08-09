@@ -2,7 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:unleash_proxy_client_flutter/unleash_proxy_client_flutter.dart';
 import 'package:unplash_sample/core/config/unleash_config.dart';
-import 'package:unplash_sample/core/utils/string_constants.dart';
 
 import '../mocks/unleash_mock.dart';
 
@@ -13,13 +12,13 @@ void main() {
   group('UnleashConfig tests', () {
     setUpAll(() {
       unleashMock = UnleashClientMock();
-      unleashConifg = UnleashConfigImp(unleashMock);
+      unleashConifg = UnleashConfigImpl(unleashMock);
     });
 
     test(
       "returns true if the remote flag for isImageDetailsEnabled if true",
       () {
-        when(() => unleashMock.isEnabled(isImageDetailsEnabled))
+        when(() => unleashMock.isEnabled(isImageDetailsEnabledToggleKey))
             .thenReturn(true);
 
         expect(unleashConifg.isDetailsPageEnabled, isTrue);
@@ -29,7 +28,7 @@ void main() {
     test(
       "returns false if the remote flag for isImageDetailsEnabled if false",
       () {
-        when(() => unleashMock.isEnabled(isImageDetailsEnabled))
+        when(() => unleashMock.isEnabled(isImageDetailsEnabledToggleKey))
             .thenReturn(false);
 
         expect(unleashConifg.isDetailsPageEnabled, isFalse);

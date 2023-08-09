@@ -1,15 +1,17 @@
 import 'package:unleash_proxy_client_flutter/unleash_proxy_client_flutter.dart';
-import 'package:unplash_sample/core/utils/string_constants.dart';
+
+const String isImageDetailsEnabledToggleKey = "isImageDetailsEnabled";
 
 abstract class UnleashConfig {
   bool get isDetailsPageEnabled;
 }
 
-class UnleashConfigImp extends UnleashConfig {
+class UnleashConfigImpl extends UnleashConfig {
   final UnleashClient unleash;
 
-  UnleashConfigImp(this.unleash);
+  UnleashConfigImpl(this.unleash);
 
   @override
-  bool get isDetailsPageEnabled => unleash.isEnabled(isImageDetailsEnabled);
+  bool get isDetailsPageEnabled =>
+      unleash.isEnabled(isImageDetailsEnabledToggleKey);
 }
