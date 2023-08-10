@@ -1,5 +1,5 @@
 
-![example workflow](https://github.com/AyushBherwani1998/unsplash_sample/actions/workflows/main.yml/badge.svg)
+![unsplash_sample](https://github.com/AyushBherwani1998/unsplash_sample/actions/workflows/main.yml/badge.svg?branch=main)
 [![codecov](https://codecov.io/gh/AyushBherwani1998/unsplash_sample/branch/main/graph/badge.svg?token=N2TBGQQPCU)](https://codecov.io/gh/AyushBherwani1998/unsplash_sample)
 ![license](https://img.shields.io/badge/license-MIT-blue.svg)
 # Unsplash Sample Flutter Project
