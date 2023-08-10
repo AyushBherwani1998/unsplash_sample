@@ -8,7 +8,7 @@
   <img src="./assets/logos/unsplash_logo.png" height="200"/>
 </p>
 
-Welcome to the Unsplash Sample Flutter Project! This repository showcases the implementation of advanced Flutter concepts such as Bloc pattern, Dependency Injection (DI), Code Coverage, Testing, Clean Architecture and Feature flagging using [Unleash](https://www.getunleash.io). Whether you're a Flutter enthusiast or a developer aiming to learn these practices, this project offers valuable insights.
+Welcome to the Unsplash Sample Flutter Project! This repository showcases the implementation of Flutter concepts such as Bloc pattern, Dependency Injection (DI), Code Coverage, Testing, Clean Architecture and Feature flagging using [Unleash](https://www.getunleash.io). Whether you're a Flutter enthusiast or a developer aiming to learn these practices, this project offers valuable insights.
 
 ## Table of Contents
 
@@ -85,9 +85,9 @@ You need to setup envoirment while working on this sample. Create a `.env` file 
 The project adheres to Clean Architecture principles, promoting separation of concerns and maintainability. Notable directories include:
 
 - `lib/features/**`: Contains the primary application code.
-- `lib/feature/**/data/`: Manages data handling, repositories, and data sources.
-- `lib/feature/**/domain/`: Encompasses business logic, use cases, and entities.
-- `lib/feature/**/presentation/`: Handles UI components, Blocs, and Widgets.
+- `lib/features/**/data/`: Manages data handling, repositories, and data sources.
+- `lib/features/**/domain/`: Encompasses business logic, use cases, and entities.
+- `lib/features/**/presentation/`: Handles UI components, Blocs, and Widgets.
 
 ## Dependency Injection
 
