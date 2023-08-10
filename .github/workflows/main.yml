@@ -1,4 +1,4 @@
-name: main action
+name: test and coverage
 on:
  push:
     branches: [main]
