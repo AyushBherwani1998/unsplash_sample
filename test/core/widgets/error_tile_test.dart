@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:unplash_sample/core/utils/string_constants.dart';
 import 'package:unplash_sample/core/widgets/error_tile.dart';
 
 void main() {
-  const text = "test";
+  const errorMessage = "test";
   final List<String> logs = [];
 
   Widget pumpErrorTileWidget() {
@@ -11,9 +13,9 @@ void main() {
       home: Scaffold(
           body: ErrorTile(
         onTap: () {
-          logs.add(text);
+          logs.add(errorMessage);
         },
-        message: text,
+        message: errorMessage,
       )),
     );
   }
@@ -22,8 +24,10 @@ void main() {
     testWidgets("text is displayed on screen", (tester) async {
       await tester.pumpWidget(pumpErrorTileWidget());
 
-      final errorText = find.text(text);
-      expect(errorText, findsOneWidget);
+      expect(find.text(errorText), findsOneWidget);
+
+      final errorMessageText = find.text(errorMessage);
+      expect(errorMessageText, findsOneWidget);
     });
 
     testWidgets("onTap is called when tile is pressed", (tester) async {
@@ -35,6 +39,12 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(logs.isEmpty, isFalse);
+    });
+
+    testWidgets("icon is displayed on screen", (tester) async {
+      await tester.pumpWidget(pumpErrorTileWidget());
+
+      expect(find.byIcon(CupertinoIcons.restart), findsOneWidget);
     });
   });
 }
