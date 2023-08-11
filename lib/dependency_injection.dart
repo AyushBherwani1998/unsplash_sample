@@ -49,8 +49,14 @@ class DependencyInjection {
     await unleash.start();
 
     getIt.registerLazySingleton(() => unleash);
-    getIt.registerLazySingleton<UnleashConfig>(() => UnleashConfigImpl(getIt()));
+    getIt
+        .registerLazySingleton<UnleashConfig>(() => UnleashConfigImpl(getIt()));
 
-    getIt.registerLazySingleton(() => Dio());
+    final options = BaseOptions(
+      baseUrl: "https://api.unsplash.com",
+      headers: {"Authorization": "Client-ID ${dotenv.env["UNSPLASH_API_KEY"]}"},
+    );
+
+    getIt.registerLazySingleton(() => Dio(options));
   }
 }

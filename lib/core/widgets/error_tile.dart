@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:unplash_sample/core/utils/string_constants.dart';
 
 class ErrorTile extends StatelessWidget {
   final VoidCallback onTap;
@@ -13,7 +15,12 @@ class ErrorTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(message),
+      leading: const Icon(CupertinoIcons.restart),
+      title: const Text(errorText),
+      subtitle: Text(
+        message,
+        style: Theme.of(context).textTheme.bodySmall,
+      ),
       onTap: onTap,
     );
   }

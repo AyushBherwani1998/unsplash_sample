@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:unplash_sample/core/utils/string_constants.dart';
 import 'package:unplash_sample/features/home/data/models/image_model.dart';
 import 'package:unplash_sample/features/home/domain/entities/image.dart';
@@ -18,15 +17,7 @@ class UnsplashRemoteDataSourceImpl implements UnsplashRemoteDataSource {
   @override
   Future<List<UnsplashImage>> fetchImages(int pageNumber) async {
     try {
-      final response = await dio.get(
-        'https://api.unsplash.com/photos',
-        queryParameters: {"page": 1},
-        options: Options(
-          headers: {
-            "Authorization": "Client-ID ${dotenv.env["UNSPLASH_API_KEY"]}"
-          },
-        ),
-      );
+      final response = await dio.get('/photos', queryParameters: {"page": 1});
       if (response.statusCode == 200) {
         final imageModelListModel = UnsplashImageListModel.fromJson(
           List.from(response.data),
