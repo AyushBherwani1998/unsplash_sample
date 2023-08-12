@@ -17,10 +17,14 @@ class UnsplashRemoteDataSourceImpl implements UnsplashRemoteDataSource {
   @override
   Future<List<UnsplashImage>> fetchImages(int pageNumber) async {
     try {
-      final response = await dio.get('/photos', queryParameters: {"page": 1});
+      final response = await dio.get<List>(
+        '/photos',
+        queryParameters: {"page": 1},
+      );
+
       if (response.statusCode == 200) {
         final imageModelListModel = UnsplashImageListModel.fromJson(
-          List.from(response.data),
+          List<Map<String, dynamic>>.from(response.data!),
         );
 
         return imageModelListModel.images;

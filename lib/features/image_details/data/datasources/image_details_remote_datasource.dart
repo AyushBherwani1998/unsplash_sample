@@ -14,10 +14,12 @@ class ImageDetailsRemoteDataSourceImpl implements ImageDetailsRemoteDataSource {
   @override
   Future<ImageDetailsModel> fetchImageDetails(String id) async {
     try {
-      final response = await dio.get('/photos/$id');
+      final response = await dio.get<Map>('/photos/$id');
 
       if (response.statusCode == 200) {
-        return ImageDetailsModel.fromJson(response.data);
+        return ImageDetailsModel.fromJson(
+          Map<String, dynamic>.from(response.data!),
+        );
       }
 
       throw Exception(serverErrorMessage);

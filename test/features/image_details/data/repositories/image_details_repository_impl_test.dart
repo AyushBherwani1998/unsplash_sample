@@ -21,7 +21,9 @@ void main() {
       dataSource = ImageDetailsRemoteSourceMock();
       repositoryIml = ImageDetailsRepositoryIml(dataSource);
       imageDetailsModel = ImageDetailsModel.fromJson(
-        jsonDecode(fixture('image_details_fixture.json')),
+        Map<String, dynamic>.from(
+          jsonDecode(fixture('image_details_fixture.json')) as Map,
+        ),
       );
     });
 

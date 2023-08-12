@@ -16,7 +16,7 @@ void main() {
     MockDependencyInjection.initialize();
     unsplashImageListModel =
         UnsplashImageListModel.fromJson(List<Map<String, dynamic>>.from(
-      jsonDecode(fixture('image_model_fixture.json')),
+      jsonDecode(fixture('image_model_fixture.json')) as List,
     ));
   });
 

@@ -23,7 +23,9 @@ void main() {
       fetchImageDetails = FetchImageDetailsMock();
       imageDetailsBloc = ImageDetailsBloc(fetchImageDetails);
       imageDetails = ImageDetailsModel.fromJson(
-        jsonDecode(fixture('image_details_fixture.json')),
+        Map<String, dynamic>.from(
+          jsonDecode(fixture('image_details_fixture.json')) as Map,
+        ),
       );
     });
 

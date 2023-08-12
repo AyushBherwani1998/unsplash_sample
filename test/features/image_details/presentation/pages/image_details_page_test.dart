@@ -34,7 +34,7 @@ void main() {
     });
 
     testWidgets("should show ErrorTile on ImageDetailsErrorState",
-        (WidgetTester tester) async {
+        (tester) async {
       when(() => bloc.stream).thenAnswer((_) {
         return Stream.value(const ImageDetailsErrorState(serverErrorMessage));
       });
@@ -56,7 +56,7 @@ void main() {
 
     testWidgets(
         "should show CircularProgressIndicator on ImageDetailsLoadingState",
-        (WidgetTester tester) async {
+        (tester) async {
       when(() => bloc.stream).thenAnswer((_) {
         return Stream.value(ImageDetailsLoadingState());
       });
@@ -74,7 +74,7 @@ void main() {
 
     testWidgets(
         "should show CircularProgressIndicator on ImageDetailsInitialState",
-        (WidgetTester tester) async {
+        (tester) async {
       when(() => bloc.stream).thenAnswer((_) {
         return Stream.value(ImageDetailsInitialState());
       });
@@ -90,9 +90,11 @@ void main() {
     });
 
     testWidgets("should show ImageDetailsWidget on ImageDetailsLoadedState",
-        (WidgetTester tester) async {
+        (tester) async {
       final imageDetails = ImageDetailsModel.fromJson(
-        jsonDecode(fixture('image_details_fixture.json')),
+        Map<String, dynamic>.from(
+          jsonDecode(fixture('image_details_fixture.json')) as Map,
+        ),
       );
 
       when(() => bloc.stream).thenAnswer((_) {

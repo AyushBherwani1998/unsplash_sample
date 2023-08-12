@@ -23,7 +23,10 @@ void main() {
   });
 
   test("ImageDetailsModel is created from json", () {
-    final jsonMap = jsonDecode(fixture('image_details_fixture.json'));
+    final jsonMap = Map<String, dynamic>.from(
+      jsonDecode(fixture('image_details_fixture.json')) as Map,
+    );
+    
     final imageDetailsModel = ImageDetailsModel.fromJson(jsonMap);
 
     expect(imageDetailsModel, detailsModel);

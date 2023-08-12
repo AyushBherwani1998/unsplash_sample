@@ -17,14 +17,14 @@ void main() async {
   late final DioMock dioMock;
   late final ImageDetailsModel imageDetailsModel;
   late final ImageDetailsRemoteDataSource imageDetailsRemoteDataSource;
-  late final dynamic jsonData;
+  late final Map<String, dynamic> jsonData;
 
   setUpAll(() async {
     dioMock = DioMock();
-    jsonData = jsonDecode(fixture('image_details_fixture.json'));
-    imageDetailsModel = ImageDetailsModel.fromJson(
-      jsonData,
+    jsonData = Map<String, dynamic>.from(
+      jsonDecode(fixture('image_details_fixture.json')) as Map,
     );
+    imageDetailsModel = ImageDetailsModel.fromJson(jsonData);
 
     imageDetailsRemoteDataSource = ImageDetailsRemoteDataSourceImpl(dioMock);
   });
@@ -32,7 +32,7 @@ void main() async {
   group('ImageDetailsRemoteDataSourceImpl tests', () {
     test('should return ImageDetailsModel upon success', () async {
       when(
-        () => dioMock.get(
+        () => dioMock.get<Map>(
           any(),
           queryParameters: any(named: "queryParameters"),
           options: any(named: "options"),
@@ -52,7 +52,7 @@ void main() async {
     });
 
     test('should return Exception upon failure', () async {
-      when(() => dioMock.get(
+      when(() => dioMock.get<Map>(
             any(),
             queryParameters: any(named: "queryParameters"),
             options: any(named: "options"),
