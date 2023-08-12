@@ -20,7 +20,7 @@ class ImageTile extends StatelessWidget {
       onTap: () {
         if (unleashConfig.isDetailsPageEnabled) {
           Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) {
+            MaterialPageRoute<ImageDetailsPage>(builder: (context) {
               return ImageDetailsPage(id: image.id);
             }),
           );
