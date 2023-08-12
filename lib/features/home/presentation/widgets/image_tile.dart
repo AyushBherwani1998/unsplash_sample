@@ -19,9 +19,11 @@ class ImageTile extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if (unleashConfig.isDetailsPageEnabled) {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-            return ImageDetailsPage(id: image.id);
-          }));
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) {
+              return ImageDetailsPage(id: image.id);
+            }),
+          );
         }
       },
       child: Container(

@@ -20,6 +20,7 @@ jobs:
         envkey_UNSPLASH_API_KEY: ""
         directory: lib/core/
         file_name: .env
+    - run: flutter analyze
     - run: flutter test --coverage
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3

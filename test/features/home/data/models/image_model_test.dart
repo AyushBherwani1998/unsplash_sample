@@ -18,7 +18,7 @@ void main() {
 
     test('UnsplashImageModelList is created from json string', () {
       final map = List<Map<String, dynamic>>.from(
-        jsonDecode(fixture('image_model_fixture.json')),
+        jsonDecode(fixture('image_model_fixture.json')) as List,
       );
 
       final result = UnsplashImageListModel.fromJson(map);

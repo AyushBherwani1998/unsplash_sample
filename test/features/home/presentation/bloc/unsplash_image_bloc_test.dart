@@ -55,7 +55,7 @@ void main() {
       () {
         final imageListModel =
             UnsplashImageListModel.fromJson(List<Map<String, dynamic>>.from(
-          jsonDecode(fixture("image_model_fixture.json")),
+          jsonDecode(fixture("image_model_fixture.json")) as List,
         ));
 
         when(() => fetchImagesMock.call(any())).thenAnswer((invocation) async {

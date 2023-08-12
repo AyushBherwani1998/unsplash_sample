@@ -34,7 +34,7 @@ void main() {
     });
 
     testWidgets("should show ErrorTile on UnsplashImageErrorState",
-        (WidgetTester tester) async {
+        (tester) async {
       when(() => bloc.stream).thenAnswer((_) {
         return Stream.value(const UnsplashImageErrorState(serverErrorMessage));
       });
@@ -54,7 +54,7 @@ void main() {
 
     testWidgets(
         "should show CircularProgressIndicator on UnsplashImageLoadingState",
-        (WidgetTester tester) async {
+        (tester) async {
       when(() => bloc.stream).thenAnswer((_) {
         return Stream.value(UnsplashImageLoadingState());
       });
@@ -70,7 +70,7 @@ void main() {
 
     testWidgets(
         "should show CircularProgressIndicator on UnsplashImageInitialState",
-        (WidgetTester tester) async {
+        (tester) async {
       when(() => bloc.stream).thenAnswer((_) {
         return Stream.value(UnsplashImageInitialState());
       });
@@ -85,10 +85,11 @@ void main() {
     });
 
     testWidgets("should show ImageGridViewWidget on UnsplashImageLoadedState",
-        (WidgetTester tester) async {
+        (tester) async {
       final unsplashImageListModel = UnsplashImageListModel.fromJson(
         List<Map<String, dynamic>>.from(
-            jsonDecode(fixture('image_model_fixture.json'))),
+          jsonDecode(fixture('image_model_fixture.json')) as List,
+        ),
       );
 
       when(() => bloc.stream).thenAnswer((_) {

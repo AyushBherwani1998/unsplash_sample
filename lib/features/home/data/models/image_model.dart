@@ -17,6 +17,9 @@ class UnsplashImageModel extends UnsplashImage {
   const UnsplashImageModel({required super.id, required super.url});
 
   factory UnsplashImageModel.fromJson(Map<String, dynamic> json) {
-    return UnsplashImageModel(id: json['id'], url: json['urls']['raw']);
+    return UnsplashImageModel(
+      id: json['id'].toString(),
+      url: json['urls']['raw'].toString(),
+    );
   }
 }

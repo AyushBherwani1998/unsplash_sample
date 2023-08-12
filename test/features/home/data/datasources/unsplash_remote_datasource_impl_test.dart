@@ -17,14 +17,14 @@ void main() async {
   late final DioMock dioMock;
   late final UnsplashImageListModel unsplashImageModel;
   late final UnsplashRemoteDataSourceImpl unsplashRemoteDataSourceImpl;
-  late final dynamic jsonData;
+  late final List<Map<String, dynamic>> jsonData;
 
   setUpAll(() async {
     dioMock = DioMock();
-    jsonData = jsonDecode(fixture('image_model_fixture.json'));
-    unsplashImageModel = UnsplashImageListModel.fromJson(
-      List<Map<String, dynamic>>.from(jsonData),
+    jsonData = List<Map<String, dynamic>>.from(
+      jsonDecode(fixture('image_model_fixture.json')) as List,
     );
+    unsplashImageModel = UnsplashImageListModel.fromJson(jsonData);
 
     unsplashRemoteDataSourceImpl = UnsplashRemoteDataSourceImpl(dioMock);
   });
@@ -32,7 +32,7 @@ void main() async {
   group('UnsplashRemoteDataSourceImpl tests', () {
     test('should return UnsplashImageModel upon success', () async {
       when(
-        () => dioMock.get(
+        () => dioMock.get<List>(
           any(),
           queryParameters: any(named: "queryParameters"),
           options: any(named: "options"),
@@ -51,7 +51,7 @@ void main() async {
     });
 
     test('should return Exception upon failure', () async {
-      when(() => dioMock.get(
+      when(() => dioMock.get<List>(
             any(),
             queryParameters: any(named: "queryParameters"),
             options: any(named: "options"),
