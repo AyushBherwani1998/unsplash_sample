@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:unplash_sample/core/config/unleash_config.dart';
 import 'package:unplash_sample/dependency_injection.dart';
 import 'package:unplash_sample/features/home/domain/entities/image.dart';
@@ -17,18 +18,20 @@ class ImageGridViewWidget extends StatelessWidget {
     final unleashConfig = DependencyInjection.getIt<UnleashConfig>();
     return CustomScrollView(
       slivers: [
-        SliverGrid.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        SliverMasonryGrid(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) {
+              final image = images[index];
+              return ImageTile(
+                image: image,
+                unleashConfig: unleashConfig,
+              );
+            },
+            childCount: images.length,
+          ),
+          gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
           ),
-          itemBuilder: (context, index) {
-            final image = images[index];
-            return ImageTile(
-              image: image,
-              unleashConfig: unleashConfig,
-            );
-          },
-          itemCount: images.length,
         ),
       ],
     );
