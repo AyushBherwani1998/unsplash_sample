@@ -23,6 +23,7 @@ Welcome to the Unsplash Sample Flutter Project! This repository showcases the im
  - [Testing](#testing)
  - [CodeCoverage](#code-coverage)
  - [License](#license)
+ - [Analytics](#analytics)
 
 ## Features
 
