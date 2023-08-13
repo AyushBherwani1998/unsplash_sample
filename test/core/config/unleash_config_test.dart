@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:unleash_proxy_client_flutter/unleash_proxy_client_flutter.dart';
+import 'package:unleash_proxy_client_flutter/variant.dart';
 import 'package:unplash_sample/core/config/unleash_config.dart';
 
 import '../mocks/unleash_mock.dart';
@@ -34,5 +36,36 @@ void main() {
         expect(unleashConifg.isDetailsPageEnabled, isFalse);
       },
     );
+
+    test(
+      "returns true if the remote flag for shareOptionExperiment if true",
+      () {
+        when(() => unleashMock.isEnabled(shareOptionExperimentKey))
+            .thenReturn(true);
+
+        expect(unleashConifg.isShareOptionExperimentEnabled, isTrue);
+      },
+    );
+
+    test(
+      "returns false if the remote flag for shareOptionExperiment if false",
+      () {
+        when(() => unleashMock.isEnabled(shareOptionExperimentKey))
+            .thenReturn(false);
+
+        expect(unleashConifg.isDetailsPageEnabled, isFalse);
+      },
+    );
+
+    test('returns SharePosition if the shareOptionExperiment is enabled', () {
+      when(() => unleashMock.getVariant(shareOptionExperimentKey)).thenReturn(
+        Variant(
+          name: describeEnum(ShareButtonPosition.gridTile),
+          enabled: true,
+        ),
+      );
+
+      expect(unleashConifg.shareButtonPosition, ShareButtonPosition.gridTile);
+    });
   });
 }
