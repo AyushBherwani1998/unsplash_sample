@@ -21,13 +21,13 @@ class ImageDetailsPage extends StatefulWidget {
 
 class _ImageDetailsPageState extends State<ImageDetailsPage> {
   late final ImageDetailsBloc bloc;
-  late final MixPanelConfig mixPanelConfig;
+  late final MixpanelConfig mixPanelConfig;
 
   @override
   void initState() {
     super.initState();
     bloc = DependencyInjection.getIt<ImageDetailsBloc>();
-    mixPanelConfig = DependencyInjection.getIt<MixPanelConfig>();
+    mixPanelConfig = DependencyInjection.getIt<MixpanelConfig>();
     _trackEvent();
     _fetchImageDetails();
   }
