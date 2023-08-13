@@ -15,7 +15,10 @@ class MixPanelConfigImpl implements MixPanelConfig {
 
   @override
   void trackImageDetaislsEvent(String photoId) {
-    mixpanel.track("image-details", properties: {"photoId": photoId});
+    mixpanel.track(
+      "image-details",
+      properties: {"photoId": photoId},
+    );
   }
 
   @override
