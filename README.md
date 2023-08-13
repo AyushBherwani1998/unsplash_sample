@@ -8,7 +8,7 @@
   <img src="./assets/logos/unsplash_logo.png" height="200"/>
 </p>
 
-Welcome to the Unsplash Sample Flutter Project! This repository showcases the implementation of Flutter concepts such as Bloc pattern, Dependency Injection (DI), Code Coverage, Testing, Clean Architecture and Feature flagging using [Unleash](https://www.getunleash.io). Whether you're a Flutter enthusiast or a developer aiming to learn these practices, this project offers valuable insights.
+Welcome to the Unsplash Sample Flutter Project! This repository showcases the implementation of Flutter concepts such as Bloc pattern, Dependency Injection (DI), Code Coverage, Testing, Clean Architecture, Analytics using [Mixpanl](https://mixpanel.com/home/) and Feature flagging using [Unleash](https://www.getunleash.io). Whether you're a Flutter enthusiast or a developer aiming to learn these practices, this project offers valuable insights.
 
 ## Table of Contents
 
@@ -23,6 +23,7 @@ Welcome to the Unsplash Sample Flutter Project! This repository showcases the im
  - [Testing](#testing)
  - [CodeCoverage](#code-coverage)
  - [License](#license)
+ - [Analytics](#analytics)
 
 ## Features
 
@@ -31,6 +32,7 @@ Welcome to the Unsplash Sample Flutter Project! This repository showcases the im
 - Codecov setup to ensure thorough testing and quality assurance.
 - Well-organized project structure following Clean Architecture principles.
 - Utilization of Unleash to demonstrate feature flagging.
+- Integration of MixPanel to track user behavior and analyze app usage patterns for better insights.
 
 ## Getting Started
 
@@ -42,6 +44,7 @@ Follow these steps to set up and run the project on your local machine.
  - [Git](https://git-scm.com/)
  - [Docker](https://www.docker.com/)
  - Ensure that you have [Unplash API key](https://unsplash.com/documentation#creating-a-developer-account)
+ - Ensure that you have [Mixpanel API key](https://docs.mixpanel.com/docs/tracking/how-tos/api-credentials)
 ### Installation
 
 1. Clone the repository:
@@ -78,6 +81,7 @@ You need to setup envoirment while working on this sample. Create a `.env` file 
    ```
     UNSPLASH_API_KEY = hgs9ZVWrHQncX8d9tLmy-zq21412
     UNLEASH_API_KEY = *:development.xxxxyyyyzzz
+    MIXPANEL_API_KEY = f9cbf11xxxxxxxxxxxxc695db39a
    ```
 
 ## Project Structure
@@ -107,6 +111,11 @@ Code coverage is enforced using test coverage tools like [codecov](https://about
 
 <img src="https://codecov.io/gh/AyushBherwani1998/unsplash_sample/branch/main/graphs/tree.svg?token=N2TBGQQPCU">
 
+## Analytics
+
+For app analytics we are using Mixpanel. It's used to track the user behavoiour and usage pattern in the application. You can checkout a gist of app analytics in the screenshot given below: 
+
+<img src="./assets/images/mixpanel.png">
 
 ## License
 ```
