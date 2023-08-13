@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:unplash_sample/core/analytics/mixpanel_config.dart';
 import 'package:unplash_sample/core/widgets/error_tile.dart';
 import 'package:unplash_sample/dependency_injection.dart';
 import 'package:unplash_sample/features/image_details/presentation/bloc/image_details_bloc.dart';
@@ -20,12 +21,19 @@ class ImageDetailsPage extends StatefulWidget {
 
 class _ImageDetailsPageState extends State<ImageDetailsPage> {
   late final ImageDetailsBloc bloc;
+  late final MixPanelConfig mixPanelConfig;
 
   @override
   void initState() {
     super.initState();
     bloc = DependencyInjection.getIt<ImageDetailsBloc>();
+    mixPanelConfig = DependencyInjection.getIt<MixPanelConfig>();
+    _trackEvent();
     _fetchImageDetails();
+  }
+
+  void _trackEvent() {
+    mixPanelConfig.trackImageDetaislsEvent(widget.id);
   }
 
   void _fetchImageDetails() {

@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
+import 'package:mixpanel_flutter/mixpanel_flutter.dart';
 import 'package:unleash_proxy_client_flutter/unleash_proxy_client_flutter.dart';
+import 'package:unplash_sample/core/analytics/mixpanel_config.dart';
 import 'package:unplash_sample/core/config/unleash_config.dart';
 import 'package:unplash_sample/features/home/data/datasources/unsplash_remote_datasource.dart';
 import 'package:unplash_sample/features/home/data/repositories/unsplash_repository_impl.dart';
@@ -49,8 +51,20 @@ class DependencyInjection {
     await unleash.start();
 
     getIt.registerLazySingleton(() => unleash);
-    getIt
-        .registerLazySingleton<UnleashConfig>(() => UnleashConfigImpl(getIt()));
+    getIt.registerLazySingleton<UnleashConfig>(
+      () => UnleashConfigImpl(getIt()),
+    );
+
+    final mixPanel = await Mixpanel.init(
+      dotenv.env["MIXPANEL_KEY"] as String,
+      trackAutomaticEvents: false,
+    );
+
+    getIt.registerLazySingleton(() => mixPanel);
+
+    getIt.registerLazySingleton<MixPanelConfig>(
+      () => MixPanelConfigImpl(getIt()),
+    );
 
     final options = BaseOptions(
       baseUrl: "https://api.unsplash.com",
