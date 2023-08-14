@@ -12,9 +12,10 @@ class UnsplashRepositoryImpl implements UnsplashRepository {
   @override
   Future<Either<CustomError, List<UnsplashImage>>> fetchImages(
     int pageNumber,
+    int perPage,
   ) async {
     try {
-      return Right(await remoteDataSource.fetchImages(pageNumber));
+      return Right(await remoteDataSource.fetchImages(pageNumber, perPage));
     } on Exception {
       return Left(ServerError());
     }

@@ -10,7 +10,9 @@ void main() {
   group("image model tests", () {
     const unsplashImageModel = UnsplashImageModel(
       id: "LBI7cgq3pbM",
-      url: "https://images.unsplash.com/face-springmorning.jpg",
+      url:
+          "https://images.unsplash.com/face-springmorning.jpg?q=75&fm=jpg&w=400&fit=max",
+      blurHash: "LoC%a7IoIVxZ_NM|M{s:%hRjWAo0",
     );
     test("UnsplashImageModel is subclass of UnsplashImage", () {
       expect(unsplashImageModel, isA<UnsplashImage>());

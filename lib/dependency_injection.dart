@@ -61,9 +61,9 @@ class DependencyInjection {
       trackAutomaticEvents: false,
     );
 
-    getIt.registerLazySingleton(() => mixPanel);
+    getIt.registerFactory(() => mixPanel);
 
-    getIt.registerLazySingleton<MixpanelConfig>(
+    getIt.registerFactory<MixpanelConfig>(
       () => MixpanelConfigImpl(getIt()),
     );
 

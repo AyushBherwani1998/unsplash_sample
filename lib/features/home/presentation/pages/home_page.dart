@@ -35,23 +35,28 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text("Unsplash Demo"),
       ),
-      body: BlocBuilder<UnsplashImageBloc, UnsplashImageState>(
-        bloc: bloc,
-        builder: (context, state) {
-          if (state is UnsplashImageErrorState) {
-            return ErrorTile(
-              onTap: () {
-                _fetchImageEvent();
-              },
-              message: state.errorMessage,
-            );
-          } else if (state is UnsplashImageLoadedState) {
-            return ImageGridViewWidget(images: state.images);
-          }
-          return const Center(
-            child: CircularProgressIndicator.adaptive(),
-          );
+      body: RefreshIndicator.adaptive(
+        onRefresh: () async {
+          _fetchImageEvent();
         },
+        child: BlocBuilder<UnsplashImageBloc, UnsplashImageState>(
+          bloc: bloc,
+          builder: (context, state) {
+            if (state is UnsplashImageErrorState) {
+              return ErrorTile(
+                onTap: () {
+                  _fetchImageEvent();
+                },
+                message: state.errorMessage,
+              );
+            } else if (state is UnsplashImageLoadedState) {
+              return ImageGridViewWidget(images: state.images);
+            }
+            return const Center(
+              child: CircularProgressIndicator.adaptive(),
+            );
+          },
+        ),
       ),
     );
   }

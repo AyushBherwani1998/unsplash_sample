@@ -14,12 +14,17 @@ class UnsplashImageListModel extends UnsplashImageList {
 }
 
 class UnsplashImageModel extends UnsplashImage {
-  const UnsplashImageModel({required super.id, required super.url});
+  const UnsplashImageModel({
+    required super.id,
+    required super.url,
+    required super.blurHash,
+  });
 
   factory UnsplashImageModel.fromJson(Map<String, dynamic> json) {
     return UnsplashImageModel(
       id: json['id'].toString(),
-      url: json['urls']['raw'].toString(),
+      url: json['urls']['small'].toString(),
+      blurHash: json['blur_hash'].toString(),
     );
   }
 }

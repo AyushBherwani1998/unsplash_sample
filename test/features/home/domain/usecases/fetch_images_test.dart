@@ -14,11 +14,13 @@ void main() {
 
   const String id = "id";
   const String url = "url";
+  const String blurHash = "hash";
 
   const imageListResponse = [
     UnsplashImage(
       id: id,
       url: url,
+      blurHash: blurHash,
     )
   ];
 
@@ -28,7 +30,8 @@ void main() {
   });
 
   test("fetchs images from unsplash repository", () async {
-    when(() => unsplashRepository.fetchImages(any())).thenAnswer((_) async {
+    when(() => unsplashRepository.fetchImages(any(), any()))
+        .thenAnswer((_) async {
       return const Right(imageListResponse);
     });
 
@@ -39,6 +42,6 @@ void main() {
       images,
       const Right<CustomError, List<UnsplashImage>>(imageListResponse),
     );
-    verify(() => unsplashRepository.fetchImages(any())).called(1);
+    verify(() => unsplashRepository.fetchImages(any(), any())).called(1);
   });
 }

@@ -6,7 +6,7 @@ import 'package:unplash_sample/features/home/data/models/image_model.dart';
 import 'package:unplash_sample/features/home/domain/entities/image.dart';
 
 abstract class UnsplashRemoteDataSource {
-  Future<List<UnsplashImage>> fetchImages(int pageNumber);
+  Future<List<UnsplashImage>> fetchImages(int pageNumber, int perPage);
 }
 
 class UnsplashRemoteDataSourceImpl implements UnsplashRemoteDataSource {
@@ -15,11 +15,14 @@ class UnsplashRemoteDataSourceImpl implements UnsplashRemoteDataSource {
   UnsplashRemoteDataSourceImpl(this.dio);
 
   @override
-  Future<List<UnsplashImage>> fetchImages(int pageNumber) async {
+  Future<List<UnsplashImage>> fetchImages(int pageNumber, int perPage) async {
     try {
       final response = await dio.get<List>(
         '/photos',
-        queryParameters: {"page": 1},
+        queryParameters: {
+          "page": pageNumber,
+          "per_page": perPage,
+        },
       );
 
       if (response.statusCode == 200) {
