@@ -1,8 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:unplash_sample/core/config/unleash_config.dart';
+import 'package:unplash_sample/core/routes/auto_router.dart';
 import 'package:unplash_sample/features/home/domain/entities/image.dart';
-import 'package:unplash_sample/features/image_details/presentation/pages/image_details_page.dart';
 
 class ImageTile extends StatelessWidget {
   final UnsplashImage image;
@@ -19,10 +20,8 @@ class ImageTile extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if (unleashConfig.isDetailsPageEnabled) {
-          Navigator.of(context).push(
-            MaterialPageRoute<ImageDetailsPage>(builder: (context) {
-              return ImageDetailsPage(id: image.id);
-            }),
+          AutoRouter.of(context).push(
+            ImageDetailsRoute(id: image.id),
           );
         }
       },
