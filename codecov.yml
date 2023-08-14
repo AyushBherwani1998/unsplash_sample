@@ -11,3 +11,4 @@ ignore:
   - 'lib/core/usecases/'
   - 'lib/dependency_injection.dart'
   - 'lib/core/analytics/'
+  - 'lib/core/routes/'
