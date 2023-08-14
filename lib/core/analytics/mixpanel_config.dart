@@ -1,6 +1,6 @@
 import 'package:mixpanel_flutter/mixpanel_flutter.dart';
 
-abstract class MixPanelConfig {
+abstract class MixpanelConfig {
   void trackImageDetaislsEvent(String photoId);
   void trackShareEventForExperimentation({
     required String variant,
@@ -8,10 +8,10 @@ abstract class MixPanelConfig {
   });
 }
 
-class MixPanelConfigImpl implements MixPanelConfig {
+class MixpanelConfigImpl implements MixpanelConfig {
   final Mixpanel mixpanel;
 
-  MixPanelConfigImpl(this.mixpanel);
+  MixpanelConfigImpl(this.mixpanel);
 
   @override
   void trackImageDetaislsEvent(String photoId) {

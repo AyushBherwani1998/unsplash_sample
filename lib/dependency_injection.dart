@@ -63,8 +63,8 @@ class DependencyInjection {
 
     getIt.registerLazySingleton(() => mixPanel);
 
-    getIt.registerLazySingleton<MixPanelConfig>(
-      () => MixPanelConfigImpl(getIt()),
+    getIt.registerLazySingleton<MixpanelConfig>(
+      () => MixpanelConfigImpl(getIt()),
     );
 
     final options = BaseOptions(

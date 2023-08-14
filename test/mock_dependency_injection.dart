@@ -17,7 +17,7 @@ class MockDependencyInjection {
     ImageDetailsBloc? imageDetailsBloc,
   }) {
     getIt.registerLazySingleton<UnleashConfig>(() => UnleashConfigMock());
-    getIt.registerLazySingleton<MixPanelConfig>(() => MixPanelConfigMock());
+    getIt.registerLazySingleton<MixpanelConfig>(() => MixPanelConfigMock());
     if (unsplashImageBloc != null) {
       getIt.registerFactory<UnsplashImageBloc>(() => unsplashImageBloc);
     }
