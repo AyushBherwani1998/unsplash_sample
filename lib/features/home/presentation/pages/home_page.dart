@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:unplash_sample/core/widgets/error_tile.dart';
@@ -6,6 +7,7 @@ import 'package:unplash_sample/features/home/domain/usecases/fetch_images.dart';
 import 'package:unplash_sample/features/home/presentation/bloc/unsplash_image_bloc.dart';
 import 'package:unplash_sample/features/home/presentation/widgets/image_gridview_widget.dart';
 
+@RoutePage()
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 

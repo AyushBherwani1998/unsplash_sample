@@ -5,6 +5,7 @@ import 'package:mixpanel_flutter/mixpanel_flutter.dart';
 import 'package:unleash_proxy_client_flutter/unleash_proxy_client_flutter.dart';
 import 'package:unplash_sample/core/analytics/mixpanel_config.dart';
 import 'package:unplash_sample/core/config/unleash_config.dart';
+import 'package:unplash_sample/core/routes/auto_router.dart';
 import 'package:unplash_sample/features/home/data/datasources/unsplash_remote_datasource.dart';
 import 'package:unplash_sample/features/home/data/repositories/unsplash_repository_impl.dart';
 import 'package:unplash_sample/features/home/domain/repositories/unsplash_repository.dart';
@@ -72,5 +73,7 @@ class DependencyInjection {
     );
 
     getIt.registerLazySingleton(() => Dio(options));
+
+    getIt.registerFactory(() => UnsplashSampleRouter());
   }
 }
