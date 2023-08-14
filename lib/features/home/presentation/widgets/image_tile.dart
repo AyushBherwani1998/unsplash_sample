@@ -29,7 +29,6 @@ class ImageTile extends StatelessWidget {
         margin: const EdgeInsets.all(4),
         child: CachedNetworkImage(
           imageUrl: image.url,
-          fit: BoxFit.fill,
         ),
       ),
     );

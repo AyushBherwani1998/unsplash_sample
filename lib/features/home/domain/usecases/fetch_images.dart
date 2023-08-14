@@ -11,7 +11,7 @@ class FetchImages extends Usecase<List<UnsplashImage>, FetchImageParams> {
 
   @override
   Future<Either<CustomError, List<UnsplashImage>>> call(FetchImageParams params) async {
-    return await repository.fetchImages(params.page);
+    return await repository.fetchImages(params.page, params.perPage);
   }
 }
 

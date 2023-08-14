@@ -45,7 +45,7 @@ void main() async {
         );
       });
 
-      final response = await unsplashRemoteDataSourceImpl.fetchImages(1);
+      final response = await unsplashRemoteDataSourceImpl.fetchImages(1, 10);
 
       expect(unsplashImageModel.images, response);
     });
@@ -62,7 +62,7 @@ void main() async {
       final fetchImageFunction = unsplashRemoteDataSourceImpl.fetchImages;
 
       expect(
-        () => fetchImageFunction.call(1),
+        () => fetchImageFunction.call(1, 10),
         throwsA(const TypeMatcher<Exception>()),
       );
     });

@@ -6,6 +6,7 @@ class ImageDetailsModel extends ImageDetails {
     required super.description,
     required super.downloads,
     required super.likes,
+    required super.blurHash,
   });
 
   factory ImageDetailsModel.fromJson(Map<String, dynamic> json) {
@@ -14,6 +15,7 @@ class ImageDetailsModel extends ImageDetails {
       description: json['description']?.toString() ?? "Description not available!",
       downloads: int.parse(json['downloads'].toString()),
       likes: int.parse(json['likes'].toString()),
+      blurHash: json['blur_hash'].toString(),
     );
   }
 }

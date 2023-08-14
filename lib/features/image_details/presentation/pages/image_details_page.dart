@@ -67,7 +67,7 @@ class _ImageDetailsPageState extends State<ImageDetailsPage> {
             return ImageDetailsWidget(imageDetails: state.imageDetails);
           }
           return const Center(
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator.adaptive(),
           );
         },
       ),

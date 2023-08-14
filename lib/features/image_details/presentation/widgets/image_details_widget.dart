@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:unplash_sample/features/image_details/domain/entities/image_details.dart';
 import 'package:unplash_sample/features/image_details/presentation/widgets/details_tile.dart';
 
@@ -25,7 +26,13 @@ class ImageDetailsWidget extends StatelessWidget {
             width: double.infinity,
             child: CachedNetworkImage(
               imageUrl: imageDetails.url,
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
+              placeholder: (_, __) {
+                return AspectRatio(
+                  aspectRatio: 1,
+                  child: BlurHash(hash: imageDetails.blurHash),
+                );
+              },
             ),
           ),
           vSeparator,

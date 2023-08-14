@@ -11,7 +11,11 @@ void main() {
   group("Unsplash repository implementation tests", () {
     late final UnsplashRemoteDataSource remoteDataSourceMock;
     late final UnsplashRepositoryImpl unsplashRepositoryImpl;
-    const unsplashImage = UnsplashImageModel(id: "id", url: "url");
+    const unsplashImage = UnsplashImageModel(
+      id: "id",
+      url: "url",
+      blurHash: "blurHash",
+    );
 
     setUpAll(() {
       remoteDataSourceMock = UnsplashRemoteDataSourceMock();
@@ -19,13 +23,13 @@ void main() {
     });
 
     test('Returns UnsplashImage list upon success', () async {
-      when(() => remoteDataSourceMock.fetchImages(any())).thenAnswer(
+      when(() => remoteDataSourceMock.fetchImages(any(), any())).thenAnswer(
         (_) async {
           return [unsplashImage];
         },
       );
 
-      final images = await unsplashRepositoryImpl.fetchImages(1);
+      final images = await unsplashRepositoryImpl.fetchImages(1, 10);
 
       images.fold(
         (left) => expect(left, isNull),
@@ -34,10 +38,10 @@ void main() {
     });
 
     test('Returns ServerError upon exception', () async {
-      when(() => remoteDataSourceMock.fetchImages(any()))
+      when(() => remoteDataSourceMock.fetchImages(any(), any()))
           .thenThrow(Exception());
 
-      final images = await unsplashRepositoryImpl.fetchImages(1);
+      final images = await unsplashRepositoryImpl.fetchImages(1, 10);
 
       images.fold(
         (left) => expect(left, ServerError()),

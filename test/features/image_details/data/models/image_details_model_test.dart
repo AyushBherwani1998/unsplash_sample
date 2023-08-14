@@ -15,6 +15,7 @@ void main() {
       description: "A man drinking a coffee.",
       downloads: 1345,
       likes: 24,
+      blurHash: 'LFC\$yHwc8^\$yIAS\$%M%00KxukYIp',
     );
   });
 
@@ -26,7 +27,7 @@ void main() {
     final jsonMap = Map<String, dynamic>.from(
       jsonDecode(fixture('image_details_fixture.json')) as Map,
     );
-    
+
     final imageDetailsModel = ImageDetailsModel.fromJson(jsonMap);
 
     expect(imageDetailsModel, detailsModel);
