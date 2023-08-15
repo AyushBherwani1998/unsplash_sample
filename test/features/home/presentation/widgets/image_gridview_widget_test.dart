@@ -24,7 +24,10 @@ void main() {
   testWidgets('GridView is rendered properly', (tester) async {
     await tester.pumpWidget(MaterialApp(
       home: Scaffold(
-        body: ImageGridViewWidget(images: unsplashImageListModel.images),
+        body: ImageGridViewWidget(
+          images: unsplashImageListModel.images,
+          controller: ScrollController(),
+        ),
       ),
     ));
 

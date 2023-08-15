@@ -94,12 +94,12 @@ void main() {
 
       when(() => bloc.stream).thenAnswer((_) {
         return Stream.value(
-          UnsplashImageLoadedState(unsplashImageListModel.images),
+          UnsplashImageLoadedState(unsplashImageListModel.images, 1),
         );
       });
 
       when(() => bloc.state).thenReturn(
-        UnsplashImageLoadedState(unsplashImageListModel.images),
+        UnsplashImageLoadedState(unsplashImageListModel.images, 1),
       );
 
       await tester.pumpWidget(pumpMaterialApp(const HomePage()));
