@@ -8,16 +8,19 @@ import 'package:unplash_sample/features/home/presentation/widgets/image_tile.dar
 
 class ImageGridViewWidget extends StatelessWidget {
   final List<UnsplashImage> images;
+  final ScrollController controller;
 
   const ImageGridViewWidget({
     super.key,
     required this.images,
+    required this.controller,
   });
 
   @override
   Widget build(BuildContext context) {
     final unleashConfig = DependencyInjection.getIt<UnleashConfig>();
     return CustomScrollView(
+      controller: controller,
       slivers: [
         SliverMasonryGrid(
           delegate: SliverChildBuilderDelegate(

@@ -15,11 +15,15 @@ class UnsplashImagePaginatedLoadingState extends UnsplashImageState {}
 
 class UnsplashImageLoadedState extends UnsplashImageState {
   final List<UnsplashImage> images;
+  final int currentPage;
 
-  const UnsplashImageLoadedState(this.images);
+  const UnsplashImageLoadedState(
+    this.images,
+    this.currentPage,
+  );
 
   @override
-  List<Object> get props => [images];
+  List<Object> get props => [images, currentPage];
 }
 
 class UnsplashImageErrorState extends UnsplashImageState {
