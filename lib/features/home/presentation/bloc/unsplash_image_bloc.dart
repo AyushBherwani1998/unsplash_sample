@@ -13,12 +13,26 @@ class UnsplashImageBloc extends Bloc<UnsplashImageEvent, UnsplashImageState> {
   UnsplashImageBloc(this.fetchImages) : super(UnsplashImageInitialState()) {
     on<UnsplashImageEvent>((event, emit) async {
       if (event is FetchImageEvent) {
-        emit(UnsplashImageLoadingState());
+        final isInitial = event.params.page == 1;
+        late final List<UnsplashImage> imageList;
+        if (isInitial) {
+          imageList = List<UnsplashImage>.empty(growable: true);
+          emit(UnsplashImageLoadingState());
+        } else {
+          imageList = List.from((state as UnsplashImageLoadedState).images);
+          emit(UnsplashImagePaginatedLoadingState());
+        }
+
         final imagesEither = await fetchImages(event.params);
         imagesEither.fold((error) {
-          emit(const UnsplashImageErrorState(serverErrorMessage));
+          if (isInitial) {
+            emit(const UnsplashImageErrorState(serverErrorMessage));
+          } else {
+            emit(const UnsplashImagePaginatedErrorState(serverErrorMessage));
+          }
         }, (images) {
-          emit(UnsplashImageLoadedState(images));
+          imageList.addAll(images);
+          emit(UnsplashImageLoadedState(imageList));
         });
       }
     });
