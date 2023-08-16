@@ -68,5 +68,29 @@ void main() async {
         throwsA(const TypeMatcher<Exception>()),
       );
     });
+
+    test('should return Exception upon status code not 200', () async {
+      when(
+        () => dioMock.get<Map>(
+          any(),
+          queryParameters: any(named: "queryParameters"),
+          options: any(named: "options"),
+        ),
+      ).thenAnswer((invocation) async {
+        return Response(
+          requestOptions: RequestOptions(),
+          statusCode: 404,
+          data: jsonData,
+        );
+      });
+
+      final fetchImageDetailsFunction =
+          imageDetailsRemoteDataSource.fetchImageDetails;
+
+      expect(
+        () => fetchImageDetailsFunction.call('id'),
+        throwsA(const TypeMatcher<Exception>()),
+      );
+    });
   });
 }

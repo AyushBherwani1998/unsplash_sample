@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -110,6 +111,25 @@ void main() {
       final imageGridView = find.byType(ImageDetailsWidget);
 
       expect(imageGridView, findsOneWidget);
+    });
+
+    testWidgets('should close page on clicking x-mark icon', (tester) async {
+      when(() => bloc.stream).thenAnswer((_) {
+        return Stream.value(ImageDetailsLoadingState());
+      });
+
+      when(() => bloc.state).thenReturn(ImageDetailsLoadingState());
+
+      await tester.pumpWidget(
+        pumpMaterialApp(const ImageDetailsPage(id: "id")),
+      );
+
+      expect(find.byIcon(CupertinoIcons.xmark), findsOneWidget);
+
+      await tester.tap(find.byIcon(CupertinoIcons.xmark));
+      await tester.pumpAndSettle();
+
+      expect(find.byIcon(CupertinoIcons.xmark), findsNothing);
     });
   });
 }
