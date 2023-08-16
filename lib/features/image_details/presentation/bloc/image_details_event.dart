@@ -11,5 +11,4 @@ class FetchImageDetailsEvent extends ImageDetailsEvent {
   final String id;
 
   const FetchImageDetailsEvent(this.id);
-
 }

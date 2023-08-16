@@ -17,16 +17,28 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late final UnsplashImageBloc bloc;
+  late final ScrollController controller;
+  late int currentPage;
 
   @override
   void initState() {
     super.initState();
     bloc = DependencyInjection.getIt<UnsplashImageBloc>();
+    controller = ScrollController();
+    controller.addListener(_onScroll);
     _fetchImageEvent();
   }
 
-  void _fetchImageEvent() {
-    bloc.add(FetchImageEvent(FetchImageParams(1, 30)));
+  void _onScroll() {
+    final maxScrollExtent = controller.position.maxScrollExtent * 0.9;
+    final isBottomReacehd = controller.position.pixels >= maxScrollExtent;
+    if (isBottomReacehd) {
+      _fetchImageEvent(currentPage + 1);
+    }
+  }
+
+  void _fetchImageEvent([int page = 1]) {
+    bloc.add(FetchImageEvent(FetchImageParams(page, 30)));
   }
 
   @override
@@ -41,6 +53,12 @@ class _HomePageState extends State<HomePage> {
         },
         child: BlocBuilder<UnsplashImageBloc, UnsplashImageState>(
           bloc: bloc,
+          buildWhen: (context, state) {
+            return state is UnsplashImageInitialState ||
+                state is UnsplashImageErrorState ||
+                state is UnsplashImageLoadedState ||
+                state is UnsplashImageLoadingState;
+          },
           builder: (context, state) {
             if (state is UnsplashImageErrorState) {
               return ErrorTile(
@@ -50,7 +68,11 @@ class _HomePageState extends State<HomePage> {
                 message: state.errorMessage,
               );
             } else if (state is UnsplashImageLoadedState) {
-              return ImageGridViewWidget(images: state.images);
+              currentPage = state.currentPage;
+              return ImageGridViewWidget(
+                images: state.images,
+                controller: controller,
+              );
             }
             return const Center(
               child: CircularProgressIndicator.adaptive(),

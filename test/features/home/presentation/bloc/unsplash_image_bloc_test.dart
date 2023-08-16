@@ -66,7 +66,7 @@ void main() {
       act: (bloc) => bloc.add(FetchImageEvent(params)),
       expect: () => [
         UnsplashImageLoadingState(),
-        UnsplashImageLoadedState(images),
+        UnsplashImageLoadedState(images, 1),
       ],
     );
 
@@ -78,7 +78,7 @@ void main() {
         });
         return UnsplashImageBloc(fetchImagesMock);
       },
-      seed: () => UnsplashImageLoadedState(images),
+      seed: () => UnsplashImageLoadedState(images, 1),
       act: (bloc) => bloc.add(FetchImageEvent(paginatedParams)),
       expect: () {
         final paginationResult = List<UnsplashImage>.from(
@@ -87,7 +87,7 @@ void main() {
         paginationResult.addAll(images);
         return [
           UnsplashImagePaginatedLoadingState(),
-          UnsplashImageLoadedState(paginationResult)
+          UnsplashImageLoadedState(paginationResult, 2)
         ];
       },
     );
@@ -100,7 +100,7 @@ void main() {
         });
         return UnsplashImageBloc(fetchImagesMock);
       },
-      seed: () => UnsplashImageLoadedState(images),
+      seed: () => UnsplashImageLoadedState(images, 1),
       act: (bloc) => bloc.add(FetchImageEvent(paginatedParams)),
       expect: () => [
         UnsplashImagePaginatedLoadingState(),

@@ -66,5 +66,27 @@ void main() async {
         throwsA(const TypeMatcher<Exception>()),
       );
     });
+
+    test('should return Exception upon status code non 200', () async {
+      when(
+        () => dioMock.get<List>(
+          any(),
+          queryParameters: any(named: "queryParameters"),
+          options: any(named: "options"),
+        ),
+      ).thenAnswer((invocation) async {
+        return Response(
+          requestOptions: RequestOptions(),
+          statusCode: 401,
+        );
+      });
+
+      final fetchImageFunction = unsplashRemoteDataSourceImpl.fetchImages;
+
+      expect(
+        () => fetchImageFunction.call(1, 10),
+        throwsA(const TypeMatcher<Exception>()),
+      );
+    });
   });
 }
