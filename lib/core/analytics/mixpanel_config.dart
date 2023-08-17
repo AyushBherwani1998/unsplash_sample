@@ -1,4 +1,6 @@
 import 'package:mixpanel_flutter/mixpanel_flutter.dart';
+import 'package:unplash_sample/core/utils/target_platform_extended.dart';
+import 'package:unplash_sample/dependency_injection.dart';
 
 abstract class MixpanelConfig {
   void trackImageDetaislsEvent(String photoId);
@@ -9,16 +11,22 @@ abstract class MixpanelConfig {
 }
 
 class MixpanelConfigImpl implements MixpanelConfig {
-  final Mixpanel mixpanel;
+  final TargetPlatformExtended targetPlatformExtended;
 
-  MixpanelConfigImpl(this.mixpanel);
+  MixpanelConfigImpl(this.targetPlatformExtended);
+
+  Mixpanel get mixpanel {
+    return DependencyInjection.getIt<Mixpanel>();
+  }
 
   @override
   void trackImageDetaislsEvent(String photoId) {
-    mixpanel.track(
-      "image-details",
-      properties: {"photoId": photoId},
-    );
+    if (targetPlatformExtended.isMobile) {
+      mixpanel.track(
+        "image-details",
+        properties: {"photoId": photoId},
+      );
+    }
   }
 
   @override
@@ -26,9 +34,11 @@ class MixpanelConfigImpl implements MixpanelConfig {
     required String variant,
     required String photoId,
   }) {
-    mixpanel.track('share-experimentation', properties: {
-      "variant": variant,
-      "photoId": photoId,
-    });
+    if (targetPlatformExtended.isMobile) {
+      mixpanel.track('share-experimentation', properties: {
+        "variant": variant,
+        "photoId": photoId,
+      });
+    }
   }
 }
