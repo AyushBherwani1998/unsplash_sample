@@ -34,18 +34,4 @@ void main() {
       expect(targetPlatformExtended.isWeb, isTrue);
     });
   });
-
-  group('WebPlatformResolver tests', () {
-    late final WebPlatformResolver webPlatformResolver;
-
-    setUpAll(() {
-      webPlatformResolver =
-          MockDependencyInjection.getIt<WebPlatformResolver>();
-    });
-
-    test('should return isWeb true if running on web', () {
-      when(() => webPlatformResolver.isWeb).thenReturn(true);
-      expect(webPlatformResolver.isWeb, isTrue);
-    });
-  });
 }
