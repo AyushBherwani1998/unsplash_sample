@@ -6,7 +6,15 @@ abstract class TargetPlatformExtended {
   bool get isWeb;
 }
 
+abstract class WebPlatformResolver {
+  bool get isWeb;
+}
+
 class TargetPlatformExtendedImpl extends TargetPlatformExtended {
+  final WebPlatformResolver webPlatformResolver;
+
+  TargetPlatformExtendedImpl(this.webPlatformResolver);
+
   @override
   bool get isDesktop {
     return defaultTargetPlatform == TargetPlatform.windows ||
@@ -20,6 +28,11 @@ class TargetPlatformExtendedImpl extends TargetPlatformExtended {
         defaultTargetPlatform == TargetPlatform.android;
   }
 
+  @override
+  bool get isWeb => webPlatformResolver.isWeb;
+}
+
+class WebPlatformResolverImpl extends WebPlatformResolver {
   @override
   bool get isWeb => kIsWeb;
 }

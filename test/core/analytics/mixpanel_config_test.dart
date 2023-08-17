@@ -11,11 +11,13 @@ void main() {
   late final MixpanelConfig mixpanelConfig;
   late final Mixpanel mixpanelMock;
   late final TargetPlatformExtended targetPlatformExtended;
+  late final WebPlatformResolver webPlatformResolver;
 
   setUp(() {
     MockDependencyInjection.initialize();
     mixpanelMock = MockDependencyInjection.getIt<Mixpanel>();
-    targetPlatformExtended = TargetPlatformExtendedImpl();
+    webPlatformResolver = MockDependencyInjection.getIt<WebPlatformResolver>();
+    targetPlatformExtended = TargetPlatformExtendedImpl(webPlatformResolver);
     mixpanelConfig = MixpanelConfigImpl(targetPlatformExtended);
   });
 

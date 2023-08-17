@@ -57,8 +57,12 @@ class DependencyInjection {
       () => UnleashConfigImpl(getIt()),
     );
 
+    getIt.registerLazySingleton<WebPlatformResolver>(
+      () => WebPlatformResolverImpl(),
+    );
+    
     final TargetPlatformExtended targetPlatformExtended =
-        TargetPlatformExtendedImpl();
+        TargetPlatformExtendedImpl(getIt());
 
     getIt.registerLazySingleton<TargetPlatformExtended>(
       () => targetPlatformExtended,
