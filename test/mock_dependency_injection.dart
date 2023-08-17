@@ -1,10 +1,12 @@
 import 'package:get_it/get_it.dart';
+import 'package:mixpanel_flutter/mixpanel_flutter.dart';
 import 'package:unplash_sample/core/analytics/mixpanel_config.dart';
 import 'package:unplash_sample/core/config/unleash_config.dart';
 import 'package:unplash_sample/features/home/presentation/bloc/unsplash_image_bloc.dart';
 import 'package:unplash_sample/features/image_details/presentation/bloc/image_details_bloc.dart';
 
 import 'core/mocks/mixpanel_config_mock.dart';
+import 'core/mocks/mixpanel_mock.dart';
 import 'core/mocks/unelash_conifg_mock.dart';
 
 class MockDependencyInjection {
@@ -16,6 +18,7 @@ class MockDependencyInjection {
     UnsplashImageBloc? unsplashImageBloc,
     ImageDetailsBloc? imageDetailsBloc,
   }) {
+    getIt.registerLazySingleton<Mixpanel>(() => MixpanelMock());
     getIt.registerLazySingleton<UnleashConfig>(() => UnleashConfigMock());
     getIt.registerLazySingleton<MixpanelConfig>(() => MixPanelConfigMock());
     if (unsplashImageBloc != null) {

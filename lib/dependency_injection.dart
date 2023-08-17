@@ -6,6 +6,7 @@ import 'package:unleash_proxy_client_flutter/unleash_proxy_client_flutter.dart';
 import 'package:unplash_sample/core/analytics/mixpanel_config.dart';
 import 'package:unplash_sample/core/config/unleash_config.dart';
 import 'package:unplash_sample/core/routes/auto_router.dart';
+import 'package:unplash_sample/core/utils/target_platform_extended.dart';
 import 'package:unplash_sample/features/home/data/datasources/unsplash_remote_datasource.dart';
 import 'package:unplash_sample/features/home/data/repositories/unsplash_repository_impl.dart';
 import 'package:unplash_sample/features/home/domain/repositories/unsplash_repository.dart';
@@ -56,14 +57,23 @@ class DependencyInjection {
       () => UnleashConfigImpl(getIt()),
     );
 
-    final mixPanel = await Mixpanel.init(
-      dotenv.env["MIXPANEL_KEY"] as String,
-      trackAutomaticEvents: false,
+    final TargetPlatformExtended targetPlatformExtended =
+        TargetPlatformExtendedImpl();
+
+    getIt.registerLazySingleton<TargetPlatformExtended>(
+      () => targetPlatformExtended,
     );
 
-    getIt.registerFactory(() => mixPanel);
+    if (targetPlatformExtended.isMobile) {
+      final mixPanel = await Mixpanel.init(
+        dotenv.env["MIXPANEL_KEY"] as String,
+        trackAutomaticEvents: false,
+      );
 
-    getIt.registerFactory<MixpanelConfig>(
+      getIt.registerLazySingleton(() => mixPanel);
+    }
+
+    getIt.registerLazySingleton<MixpanelConfig>(
       () => MixpanelConfigImpl(getIt()),
     );
 
