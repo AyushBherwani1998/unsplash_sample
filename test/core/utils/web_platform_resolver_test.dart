@@ -1,7 +1,7 @@
 @TestOn("browser")
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:unplash_sample/core/utils/target_platform_extended.dart';
+import 'package:unplash_sample/core/utils/web_platform_resolver.dart';
 
 void main() {
   final WebPlatformResolver webPlatformResolver = WebPlatformResolverImpl();

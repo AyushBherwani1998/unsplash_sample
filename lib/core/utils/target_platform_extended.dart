@@ -1,12 +1,9 @@
 import 'package:flutter/foundation.dart';
+import 'package:unplash_sample/core/utils/web_platform_resolver.dart';
 
 abstract class TargetPlatformExtended {
   bool get isMobile;
   bool get isDesktop;
-  bool get isWeb;
-}
-
-abstract class WebPlatformResolver {
   bool get isWeb;
 }
 
@@ -32,7 +29,3 @@ class TargetPlatformExtendedImpl extends TargetPlatformExtended {
   bool get isWeb => webPlatformResolver.isWeb;
 }
 
-class WebPlatformResolverImpl extends WebPlatformResolver {
-  @override
-  bool get isWeb => kIsWeb;
-}

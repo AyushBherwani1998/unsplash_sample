@@ -2,7 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:mixpanel_flutter/mixpanel_flutter.dart';
 import 'package:unplash_sample/core/analytics/mixpanel_config.dart';
 import 'package:unplash_sample/core/config/unleash_config.dart';
-import 'package:unplash_sample/core/utils/target_platform_extended.dart';
+import 'package:unplash_sample/core/utils/web_platform_resolver.dart';
 import 'package:unplash_sample/features/home/presentation/bloc/unsplash_image_bloc.dart';
 import 'package:unplash_sample/features/image_details/presentation/bloc/image_details_bloc.dart';
 
