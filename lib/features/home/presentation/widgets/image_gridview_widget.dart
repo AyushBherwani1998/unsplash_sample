@@ -22,19 +22,24 @@ class ImageGridViewWidget extends StatelessWidget {
     return CustomScrollView(
       controller: controller,
       slivers: [
-        SliverMasonryGrid(
-          delegate: SliverChildBuilderDelegate(
-            (context, index) {
-              final image = images[index];
-              return ImageTile(
-                image: image,
-                unleashConfig: unleashConfig,
-              );
-            },
-            childCount: images.length,
-          ),
-          gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
+        SliverPadding(
+          padding: const EdgeInsets.only(left: 8, right: 8),
+          sliver: SliverMasonryGrid(
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                final image = images[index];
+                return ImageTile(
+                  image: image,
+                  unleashConfig: unleashConfig,
+                );
+              },
+              childCount: images.length,
+            ),
+            gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+            ),
           ),
         ),
       ],

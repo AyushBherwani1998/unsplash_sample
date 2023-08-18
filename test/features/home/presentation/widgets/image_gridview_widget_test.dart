@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:unplash_sample/features/home/data/models/image_model.dart';
 import 'package:unplash_sample/features/home/presentation/widgets/image_gridview_widget.dart';
+import 'package:unplash_sample/features/home/presentation/widgets/image_tile.dart';
 
 import '../../../../fixtures/fixture_reader.dart';
 import '../../../../mock_dependency_injection.dart';
@@ -22,16 +22,21 @@ void main() {
   });
 
   testWidgets('GridView is rendered properly', (tester) async {
-    await tester.pumpWidget(MaterialApp(
-      home: Scaffold(
-        body: ImageGridViewWidget(
-          images: unsplashImageListModel.images,
-          controller: ScrollController(),
+    await tester.runAsync(() async {
+      await tester.pumpWidget(MaterialApp(
+        home: Scaffold(
+          body: ImageGridViewWidget(
+            images: unsplashImageListModel.images,
+            controller: ScrollController(),
+          ),
         ),
-      ),
-    ));
+      ));
 
-    expect(find.byType(SliverMasonryGrid), findsOneWidget);
-    expect(find.byType(CachedNetworkImage), findsOneWidget);
+      await Future<void>.delayed(const Duration(milliseconds: 1000));
+      await tester.pump();
+
+      expect(find.byType(SliverMasonryGrid), findsOneWidget);
+      expect(find.byType(ImageTile), findsOneWidget);
+    });
   });
 }

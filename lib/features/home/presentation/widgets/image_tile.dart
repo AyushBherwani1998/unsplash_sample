@@ -1,9 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:unplash_sample/core/config/unleash_config.dart';
 import 'package:unplash_sample/core/routes/auto_router.dart';
+import 'package:unplash_sample/dependency_injection.dart';
 import 'package:unplash_sample/features/home/domain/entities/image.dart';
+import 'package:unplash_sample/features/home/presentation/widgets/image_tile_footer.dart';
+import 'package:unplash_sample/features/home/presentation/widgets/image_tile_header.dart';
 
 class ImageTile extends StatelessWidget {
   final UnsplashImage image;
@@ -17,20 +22,29 @@ class ImageTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        if (unleashConfig.isDetailsPageEnabled) {
-          AutoRouter.of(context).push(
-            ImageDetailsRoute(id: image.id),
-          );
-        }
+    return CachedNetworkImage(
+      imageUrl: image.url,
+      cacheManager: DependencyInjection.getIt<DefaultCacheManager>(),
+      imageBuilder: (context, provider) {
+        return Column(
+          children: [
+            ImageTileHeader(image: image),
+            const SizedBox(height: 4),
+            GestureDetector(
+              onTap: () {
+                if (unleashConfig.isDetailsPageEnabled) {
+                  AutoRouter.of(context).push(
+                    ImageDetailsRoute(id: image.id),
+                  );
+                }
+              },
+              child: Image(image: provider),
+            ),
+            const SizedBox(height: 4),
+            ImageTileFooter(image: image),
+          ],
+        );
       },
-      child: Container(
-        margin: const EdgeInsets.all(4),
-        child: CachedNetworkImage(
-          imageUrl: image.url,
-        ),
-      ),
     );
   }
 }
