@@ -7,6 +7,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:unplash_sample/core/config/unleash_config.dart';
 import 'package:unplash_sample/core/utils/string_constants.dart';
 import 'package:unplash_sample/core/widgets/error_tile.dart';
+import 'package:unplash_sample/core/widgets/like_button.dart';
 import 'package:unplash_sample/features/image_details/data/models/image_details_model.dart';
 import 'package:unplash_sample/features/image_details/presentation/bloc/image_details_bloc.dart';
 import 'package:unplash_sample/features/image_details/presentation/pages/image_details_page.dart';
@@ -33,7 +34,7 @@ void main() {
       unleashConfig = MockDependencyInjection.getIt<UnleashConfig>();
       when(() => unleashConfig.isLikeOptionExperimentEnabled).thenReturn(true);
       when(() => unleashConfig.likeButtonPosition)
-          .thenReturn(LikeButtonPosition.gridTile);
+          .thenReturn(LikeButtonPosition.imageDetails);
     });
 
     tearDownAll(() {
@@ -117,6 +118,7 @@ void main() {
       final imageGridView = find.byType(ImageDetailsWidget);
 
       expect(imageGridView, findsOneWidget);
+      expect(find.byType(LikeButton), findsOneWidget);
     });
 
     testWidgets('should close page on clicking x-mark icon', (tester) async {
