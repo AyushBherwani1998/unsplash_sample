@@ -1,14 +1,14 @@
 import 'package:unleash_proxy_client_flutter/unleash_proxy_client_flutter.dart';
 
 const String isImageDetailsEnabledToggleKey = "isImageDetailsEnabled";
-const String shareOptionExperimentKey = "shareOptionExperiment";
+const String likeOptionExperimentKey = "likeOptionExperiment";
 
-enum ShareButtonPosition { gridTile, imageDetails }
+enum LikeButtonPosition { gridTile, imageDetails }
 
 abstract class UnleashConfig {
   bool get isDetailsPageEnabled;
-  bool get isShareOptionExperimentEnabled;
-  ShareButtonPosition get shareButtonPosition;
+  bool get isLikeOptionExperimentEnabled;
+  LikeButtonPosition get likeButtonPosition;
 }
 
 class UnleashConfigImpl extends UnleashConfig {
@@ -21,12 +21,12 @@ class UnleashConfigImpl extends UnleashConfig {
       unleash.isEnabled(isImageDetailsEnabledToggleKey);
 
   @override
-  bool get isShareOptionExperimentEnabled =>
-      unleash.isEnabled(shareOptionExperimentKey);
+  bool get isLikeOptionExperimentEnabled =>
+      unleash.isEnabled(likeOptionExperimentKey);
 
   @override
-  ShareButtonPosition get shareButtonPosition {
-    final variant = unleash.getVariant(shareOptionExperimentKey);
-    return ShareButtonPosition.values.byName(variant.name);
+  LikeButtonPosition get likeButtonPosition {
+    final variant = unleash.getVariant(likeOptionExperimentKey);
+    return LikeButtonPosition.values.byName(variant.name);
   }
 }

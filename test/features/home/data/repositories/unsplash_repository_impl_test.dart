@@ -15,6 +15,9 @@ void main() {
       id: "id",
       url: "url",
       blurHash: "blurHash",
+      likes: 1,
+      profileImage: "profileImage",
+      userName: "userName",
     );
 
     setUpAll(() {

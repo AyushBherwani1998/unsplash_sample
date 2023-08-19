@@ -40,17 +40,17 @@ void main() {
     test(
       "returns true if the remote flag for shareOptionExperiment if true",
       () {
-        when(() => unleashMock.isEnabled(shareOptionExperimentKey))
+        when(() => unleashMock.isEnabled(likeOptionExperimentKey))
             .thenReturn(true);
 
-        expect(unleashConifg.isShareOptionExperimentEnabled, isTrue);
+        expect(unleashConifg.isLikeOptionExperimentEnabled, isTrue);
       },
     );
 
     test(
       "returns false if the remote flag for shareOptionExperiment if false",
       () {
-        when(() => unleashMock.isEnabled(shareOptionExperimentKey))
+        when(() => unleashMock.isEnabled(likeOptionExperimentKey))
             .thenReturn(false);
 
         expect(unleashConifg.isDetailsPageEnabled, isFalse);
@@ -58,14 +58,14 @@ void main() {
     );
 
     test('returns SharePosition if the shareOptionExperiment is enabled', () {
-      when(() => unleashMock.getVariant(shareOptionExperimentKey)).thenReturn(
+      when(() => unleashMock.getVariant(likeOptionExperimentKey)).thenReturn(
         Variant(
-          name: describeEnum(ShareButtonPosition.gridTile),
+          name: describeEnum(LikeButtonPosition.gridTile),
           enabled: true,
         ),
       );
 
-      expect(unleashConifg.shareButtonPosition, ShareButtonPosition.gridTile);
+      expect(unleashConifg.likeButtonPosition, LikeButtonPosition.gridTile);
     });
   });
 }

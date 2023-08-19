@@ -18,6 +18,9 @@ class UnsplashImageModel extends UnsplashImage {
     required super.id,
     required super.url,
     required super.blurHash,
+    required super.likes,
+    required super.userName,
+    required super.profileImage,
   });
 
   factory UnsplashImageModel.fromJson(Map<String, dynamic> json) {
@@ -25,6 +28,9 @@ class UnsplashImageModel extends UnsplashImage {
       id: json['id'].toString(),
       url: json['urls']['small'].toString(),
       blurHash: json['blur_hash'].toString(),
+      likes: int.parse(json['likes'].toString()),
+      userName: json['user']['username'].toString(),
+      profileImage: json['user']['profile_image']['small'].toString(),
     );
   }
 }

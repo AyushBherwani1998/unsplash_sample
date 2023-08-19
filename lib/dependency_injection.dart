@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mixpanel_flutter/mixpanel_flutter.dart';
@@ -61,7 +62,7 @@ class DependencyInjection {
     getIt.registerLazySingleton<WebPlatformResolver>(
       () => WebPlatformResolverImpl(),
     );
-    
+
     final TargetPlatformExtended targetPlatformExtended =
         TargetPlatformExtendedImpl(getIt());
 
@@ -90,5 +91,7 @@ class DependencyInjection {
     getIt.registerLazySingleton(() => Dio(options));
 
     getIt.registerFactory(() => UnsplashSampleRouter());
+
+    getIt.registerLazySingleton<DefaultCacheManager>(() => DefaultCacheManager());
   }
 }

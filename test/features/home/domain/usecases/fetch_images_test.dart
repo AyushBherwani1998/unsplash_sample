@@ -12,15 +12,14 @@ void main() {
   late final FetchImages fetchImages;
   late final UnsplashRepository unsplashRepository;
 
-  const String id = "id";
-  const String url = "url";
-  const String blurHash = "hash";
-
   const imageListResponse = [
     UnsplashImage(
-      id: id,
-      url: url,
-      blurHash: blurHash,
+      id: "id",
+      url: "url",
+      blurHash: "blurHash",
+      profileImage: "profileImage",
+      likes: 1,
+      userName: "userName"
     )
   ];
 

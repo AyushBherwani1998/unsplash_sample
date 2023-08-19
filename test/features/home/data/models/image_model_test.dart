@@ -13,6 +13,10 @@ void main() {
       url:
           "https://images.unsplash.com/face-springmorning.jpg?q=75&fm=jpg&w=400&fit=max",
       blurHash: "LoC%a7IoIVxZ_NM|M{s:%hRjWAo0",
+      likes: 12,
+      userName: "poorkane",
+      profileImage:
+          "https://images.unsplash.com/face-springmorning.jpg?q=80&fm=jpg&crop=faces&fit=crop&h=32&w=32",
     );
     test("UnsplashImageModel is subclass of UnsplashImage", () {
       expect(unsplashImageModel, isA<UnsplashImage>());
