@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:unplash_sample/core/widgets/like_button.dart';
 import 'package:unplash_sample/features/home/data/models/image_model.dart';
 import 'package:unplash_sample/features/home/domain/entities/image.dart';
 import 'package:unplash_sample/features/home/presentation/widgets/image_tile_footer.dart';
@@ -33,7 +34,7 @@ void main() {
     testWidgets('should render IconButton and Text', (tester) async {
       await tester.pumpWidget(pumpImageTileFooterWidget());
 
-      expect(find.byIcon(CupertinoIcons.heart), findsOneWidget);
+      expect(find.byType(LikeButton), findsOneWidget);
       expect(find.text(image.likes.toString()), findsOneWidget);
     });
   });

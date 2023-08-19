@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mixpanel_flutter/mixpanel_flutter.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:unplash_sample/core/analytics/mixpanel_config.dart';
+import 'package:unplash_sample/core/config/unleash_config.dart';
 import 'package:unplash_sample/core/utils/target_platform_extended.dart';
 import 'package:unplash_sample/core/utils/web_platform_resolver.dart';
 
@@ -27,7 +28,7 @@ void main() {
     mixpanelConfig.trackImageDetaislsEvent("1");
     mixpanelConfig.trackLikeEventForExperimentation(
       photoId: "1",
-      variant: "gridTile",
+      likeButtonPosition: LikeButtonPosition.gridTile,
     );
 
     verify(

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:unplash_sample/core/config/unleash_config.dart';
+import 'package:unplash_sample/core/widgets/like_button.dart';
 import 'package:unplash_sample/features/home/domain/entities/image.dart';
 
 class ImageTileFooter extends StatefulWidget {
@@ -25,25 +27,10 @@ class _ImageTileFooterState extends State<ImageTileFooter> {
     return Row(
       children: [
         const Spacer(),
-        ValueListenableBuilder<bool>(
-          valueListenable: isLikedNotifier,
-          builder: (context, isLiked, child) {
-            return IconButton(
-              padding: EdgeInsets.zero,
-              visualDensity: VisualDensity.compact,
-              iconSize: 20,
-              isSelected: isLiked,
-              splashColor: Colors.red,
-              onPressed: () {
-                isLikedNotifier.value = !isLikedNotifier.value;
-              },
-              selectedIcon: const Icon(
-                CupertinoIcons.heart_fill,
-                color: Colors.redAccent,
-              ),
-              icon: const Icon(CupertinoIcons.heart),
-            );
-          },
+        LikeButton(
+          isLikedNotifier: isLikedNotifier,
+          photoId: widget.image.id,
+          likeButtonPosition: LikeButtonPosition.gridTile,
         ),
         Text(widget.image.likes.toString()),
       ],
