@@ -4,6 +4,7 @@ import 'package:unplash_sample/features/home/domain/entities/image.dart';
 
 class ImageTileFooter extends StatefulWidget {
   final UnsplashImage image;
+
   const ImageTileFooter({super.key, required this.image});
 
   @override

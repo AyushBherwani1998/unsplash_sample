@@ -21,7 +21,10 @@ void main() {
   Widget pumpImageTileFooterWidget() {
     return MaterialApp(
       home: Scaffold(
-        body: SizedBox.expand(child: ImageTileFooter(image: image)),
+        body: SizedBox.expand(
+            child: ImageTileFooter(
+          image: image,
+        )),
       ),
     );
   }

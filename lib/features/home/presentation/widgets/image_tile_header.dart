@@ -34,7 +34,8 @@ class ImageTileHeader extends StatelessWidget {
           child: Text(
             image.userName,
             style: Theme.of(context).textTheme.bodyLarge,
-            overflow: TextOverflow.fade,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
           ),
         ),
       ],

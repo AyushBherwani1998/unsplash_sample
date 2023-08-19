@@ -20,6 +20,13 @@ class ImageTile extends StatelessWidget {
     required this.unleashConfig,
   });
 
+  bool get isFooterEnabled {
+    return unleashConfig.isLikeOptionExperimentEnabled &&
+        unleashConfig.likeButtonPosition == LikeButtonPosition.gridTile;
+  }
+
+  Widget tileGap() => const SizedBox(height: 4);
+
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
@@ -29,7 +36,7 @@ class ImageTile extends StatelessWidget {
         return Column(
           children: [
             ImageTileHeader(image: image),
-            const SizedBox(height: 4),
+            tileGap(),
             GestureDetector(
               onTap: () {
                 if (unleashConfig.isDetailsPageEnabled) {
@@ -40,8 +47,10 @@ class ImageTile extends StatelessWidget {
               },
               child: Image(image: provider),
             ),
-            const SizedBox(height: 4),
-            ImageTileFooter(image: image),
+            tileGap(),
+            if (isFooterEnabled) ...[
+              ImageTileFooter(image: image),
+            ],
           ],
         );
       },

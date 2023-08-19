@@ -4,7 +4,7 @@ import 'package:unplash_sample/dependency_injection.dart';
 
 abstract class MixpanelConfig {
   void trackImageDetaislsEvent(String photoId);
-  void trackShareEventForExperimentation({
+  void trackLikeEventForExperimentation({
     required String variant,
     required String photoId,
   });
@@ -30,12 +30,12 @@ class MixpanelConfigImpl implements MixpanelConfig {
   }
 
   @override
-  void trackShareEventForExperimentation({
+  void trackLikeEventForExperimentation({
     required String variant,
     required String photoId,
   }) {
     if (targetPlatformExtended.isMobile) {
-      mixpanel.track('share-experimentation', properties: {
+      mixpanel.track('like-experimentation', properties: {
         "variant": variant,
         "photoId": photoId,
       });
