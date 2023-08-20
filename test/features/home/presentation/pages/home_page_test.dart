@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:unplash_sample/core/config/unleash_config.dart';
 import 'package:unplash_sample/core/utils/string_constants.dart';
 import 'package:unplash_sample/core/widgets/error_tile.dart';
 import 'package:unplash_sample/features/home/data/models/image_model.dart';
@@ -23,10 +24,16 @@ void main() {
 
   group("HomePage tests", () {
     late final UnsplashImageBloc bloc;
+    late final UnleashConfig unleashConfig;
 
     setUpAll(() {
       bloc = UnsplashImageBlocMock();
       MockDependencyInjection.initialize(unsplashImageBloc: bloc);
+      unleashConfig = MockDependencyInjection.getIt<UnleashConfig>();
+
+      when(() => unleashConfig.isLikeOptionExperimentEnabled).thenReturn(true);
+      when(() => unleashConfig.likeButtonPosition)
+          .thenReturn(LikeButtonPosition.gridTile);
     });
 
     tearDownAll(() {

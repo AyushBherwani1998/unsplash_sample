@@ -10,6 +10,7 @@ abstract class MixpanelConfig {
     required LikeButtonPosition likeButtonPosition,
     required String photoId,
   });
+  void trackLikeVariant(LikeButtonPosition likeButtonPosition);
 }
 
 class MixpanelConfigImpl implements MixpanelConfig {
@@ -40,6 +41,15 @@ class MixpanelConfigImpl implements MixpanelConfig {
       mixpanel.track('like-experimentation', properties: {
         "variant": describeEnum(likeButtonPosition),
         "photoId": photoId,
+      });
+    }
+  }
+
+  @override
+  void trackLikeVariant(LikeButtonPosition likeButtonPosition) {
+    if (targetPlatformExtended.isMobile) {
+      mixpanel.track('like-variant', properties: {
+        "variant": describeEnum(likeButtonPosition),
       });
     }
   }

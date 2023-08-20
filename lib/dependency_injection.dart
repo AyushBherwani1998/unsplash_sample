@@ -92,6 +92,7 @@ class DependencyInjection {
 
     getIt.registerFactory(() => UnsplashSampleRouter());
 
-    getIt.registerLazySingleton<DefaultCacheManager>(() => DefaultCacheManager());
+    getIt.registerLazySingleton<DefaultCacheManager>(
+        () => DefaultCacheManager());
   }
 }

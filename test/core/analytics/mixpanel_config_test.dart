@@ -30,10 +30,11 @@ void main() {
       photoId: "1",
       likeButtonPosition: LikeButtonPosition.gridTile,
     );
+    mixpanelConfig.trackLikeVariant(LikeButtonPosition.gridTile);
 
     verify(
       () => mixpanelMock.track(any(), properties: any(named: 'properties')),
-    ).called(2);
+    ).called(3);
     debugDefaultTargetPlatformOverride = null;
   });
 }
