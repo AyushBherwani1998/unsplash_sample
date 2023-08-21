@@ -8,7 +8,7 @@
   <img src="./assets/logos/unsplash_logo.png" height="200"/>
 </p>
 
-Welcome to the Unsplash Sample Flutter Project! This repository showcases the implementation of Flutter concepts such as Bloc pattern, Dependency Injection (DI), Code Coverage, Testing, Clean Architecture, Analytics using [Mixpanl](https://mixpanel.com/home/) and Feature flagging using [Unleash](https://www.getunleash.io). Whether you're a Flutter enthusiast or a developer aiming to learn these practices, this project offers valuable insights.
+Welcome to the Unsplash Sample Flutter Project! This repository showcases the implementation of Flutter concepts such as Bloc pattern, Dependency Injection (DI), Code Coverage, Testing, Clean Architecture, Analytics using [Mixpanel](https://mixpanel.com/home/) and Feature flagging using [Unleash](https://www.getunleash.io). Whether you're a Flutter enthusiast or a developer aiming to learn these practices, this project offers valuable insights.
 
 ## Table of Contents
 
@@ -24,6 +24,7 @@ Welcome to the Unsplash Sample Flutter Project! This repository showcases the im
  - [CodeCoverage](#code-coverage)
  - [License](#license)
  - [Analytics](#analytics)
+ - [A/B Testing](#ab-testing)
 
 ## Features
 
@@ -32,6 +33,7 @@ Welcome to the Unsplash Sample Flutter Project! This repository showcases the im
 - Codecov setup to ensure thorough testing and quality assurance.
 - Well-organized project structure following Clean Architecture principles.
 - Utilization of Unleash to demonstrate feature flagging.
+- Utilization of Unleash and Mixpanel to demonstrate A/B testing.
 - Integration of MixPanel to track user behavior and analyze app usage patterns for better insights.
 
 ## Getting Started
@@ -116,6 +118,18 @@ Code coverage is enforced using test coverage tools like [codecov](https://about
 For app analytics we are using Mixpanel. It's used to track the user behavoiour and usage pattern in the application. You can checkout a gist of app analytics in the screenshot given below: 
 
 <img src="./assets/images/mixpanel.png">
+
+## A/B testing
+For the app we are using Unleash to perform A/B testing and mixpanel to collect analytics and funnel.
+
+ ### Configuration:
+ - Create `likeOptionExperiment` flag in Unleash instance with toggle called `experiment`
+ - Create two varinats `gridTile` and `imageDetails` for testing
+ - Enable the flags :tada:
+
+Below is a funnel screenshot for “like image” experimentation
+
+<img src="./assets/images/mixpanel_report.png">
 
 ## License
 ```
