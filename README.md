@@ -8,7 +8,7 @@
   <img src="./assets/logos/unsplash_logo.png" height="200"/>
 </p>
 
-Welcome to the Unsplash Sample Flutter Project! This repository showcases the implementation of Flutter concepts such as Bloc pattern, Dependency Injection (DI), Code Coverage, Testing, Clean Architecture, Analytics using [Mixpanel](https://mixpanel.com/home/) and Feature flagging using [Unleash](https://www.getunleash.io). Whether you're a Flutter enthusiast or a developer aiming to learn these practices, this project offers valuable insights.
+Welcome to the Unsplash Sample Flutter Project! This repository showcases the implementation of Flutter concepts such as Bloc pattern, Dependency Injection (DI), Code Coverage, Testing, Clean Architecture, Analytics using [Mixpanel](https://mixpanel.com/home/), Feature flagging & A/B testing using [Unleash](https://www.getunleash.io). Whether you're a Flutter enthusiast or a developer aiming to learn these practices, this project offers valuable insights.
 
 ## Table of Contents
 
