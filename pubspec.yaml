@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  auto_route: ^7.8.2
+  auto_route: ^7.8.3
   bloc: ^8.1.2
   bloc_concurrency: ^0.2.2
   cached_network_image: ^3.2.3
