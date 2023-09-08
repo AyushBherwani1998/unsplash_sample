@@ -41,7 +41,7 @@ class _ImageDetailsPageState extends State<ImageDetailsPage> {
   }
 
   void _trackEvent() {
-    mixPanelConfig.trackImageDetaislsEvent(widget.id);
+    mixPanelConfig.trackImageDetailsEvent(widget.id);
   }
 
   void _fetchImageDetails() {
