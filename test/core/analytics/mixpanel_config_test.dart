@@ -25,7 +25,7 @@ void main() {
 
   test('Mixpanel config tests', () {
     debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-    mixpanelConfig.trackImageDetaislsEvent("1");
+    mixpanelConfig.trackImageDetailsEvent("1");
     mixpanelConfig.trackLikeEventForExperimentation(
       photoId: "1",
       likeButtonPosition: LikeButtonPosition.gridTile,

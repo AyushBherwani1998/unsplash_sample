@@ -5,7 +5,7 @@ import 'package:unplash_sample/core/utils/target_platform_extended.dart';
 import 'package:unplash_sample/dependency_injection.dart';
 
 abstract class MixpanelConfig {
-  void trackImageDetaislsEvent(String photoId);
+  void trackImageDetailsEvent(String photoId);
   void trackLikeEventForExperimentation({
     required LikeButtonPosition likeButtonPosition,
     required String photoId,
@@ -23,7 +23,7 @@ class MixpanelConfigImpl implements MixpanelConfig {
   }
 
   @override
-  void trackImageDetaislsEvent(String photoId) {
+  void trackImageDetailsEvent(String photoId) {
     if (targetPlatformExtended.isMobile) {
       mixpanel.track(
         "image-details",
