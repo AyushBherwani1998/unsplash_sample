@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:unplash_sample/core/error/error.dart';
-import 'package:unplash_sample/core/utils/string_constants.dart';
-import 'package:unplash_sample/features/image_details/data/models/image_details_model.dart';
-import 'package:unplash_sample/features/image_details/domain/entities/image_details.dart';
-import 'package:unplash_sample/features/image_details/domain/usecases/fetch_image_details.dart';
-import 'package:unplash_sample/features/image_details/presentation/bloc/image_details_bloc.dart';
+import 'package:unsplash_sample/core/error/error.dart';
+import 'package:unsplash_sample/core/utils/string_constants.dart';
+import 'package:unsplash_sample/features/image_details/data/models/image_details_model.dart';
+import 'package:unsplash_sample/features/image_details/domain/entities/image_details.dart';
+import 'package:unsplash_sample/features/image_details/domain/usecases/fetch_image_details.dart';
+import 'package:unsplash_sample/features/image_details/presentation/bloc/image_details_bloc.dart';
 
 import '../../../../core/mocks/fetch_image_details_mock.dart';
 import '../../../../fixtures/fixture_reader.dart';

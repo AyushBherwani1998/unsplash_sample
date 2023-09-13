@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:unplash_sample/features/image_details/domain/entities/image_details.dart';
+import 'package:unsplash_sample/features/image_details/domain/entities/image_details.dart';
 
 class DetailsTile extends StatelessWidget {
   final ImageDetails imageDetails;

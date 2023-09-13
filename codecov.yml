@@ -9,5 +9,5 @@ ignore:
   - '**/entities/'
   - 'lib/core/error/'
   - 'lib/core/usecases/'
-  - 'lib/dependency_injection.dart'
+  - 'lib/service_locator.dart'
   - 'lib/core/routes/'

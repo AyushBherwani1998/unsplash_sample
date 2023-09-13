@@ -4,8 +4,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:unplash_sample/features/image_details/data/datasources/image_details_remote_datasource.dart';
-import 'package:unplash_sample/features/image_details/data/models/image_details_model.dart';
+import 'package:unsplash_sample/features/image_details/data/datasources/image_details_remote_datasource.dart';
+import 'package:unsplash_sample/features/image_details/data/models/image_details_model.dart';
 
 import '../../../../core/mocks/dio_mock.dart';
 import '../../../../fixtures/fixture_reader.dart';

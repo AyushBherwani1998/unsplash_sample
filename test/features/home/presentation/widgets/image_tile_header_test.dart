@@ -2,18 +2,18 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:unplash_sample/features/home/data/models/image_model.dart';
-import 'package:unplash_sample/features/home/domain/entities/image.dart';
-import 'package:unplash_sample/features/home/presentation/widgets/image_tile_header.dart';
+import 'package:unsplash_sample/features/home/data/models/image_model.dart';
+import 'package:unsplash_sample/features/home/domain/entities/image.dart';
+import 'package:unsplash_sample/features/home/presentation/widgets/image_tile_header.dart';
 
 import '../../../../fixtures/fixture_reader.dart';
-import '../../../../mock_dependency_injection.dart';
+import '../../../../service_locator_mock.dart';
 
 void main() {
   late final UnsplashImage image;
 
   setUp(() {
-    MockDependencyInjection.initialize();
+    SerivceLocatorMock.initialize();
     image = UnsplashImageListModel.fromJson(List<Map<String, dynamic>>.from(
       jsonDecode(fixture('image_model_fixture.json')) as List,
     )).images.first;

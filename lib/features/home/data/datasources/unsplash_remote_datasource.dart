@@ -1,9 +1,9 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:unplash_sample/core/utils/string_constants.dart';
-import 'package:unplash_sample/features/home/data/models/image_model.dart';
-import 'package:unplash_sample/features/home/domain/entities/image.dart';
+import 'package:unsplash_sample/core/utils/string_constants.dart';
+import 'package:unsplash_sample/features/home/data/models/image_model.dart';
+import 'package:unsplash_sample/features/home/domain/entities/image.dart';
 
 abstract class UnsplashRemoteDataSource {
   Future<List<UnsplashImage>> fetchImages(int pageNumber, int perPage);

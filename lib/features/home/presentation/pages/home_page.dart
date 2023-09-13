@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:unplash_sample/core/analytics/mixpanel_config.dart';
-import 'package:unplash_sample/core/config/unleash_config.dart';
-import 'package:unplash_sample/core/widgets/error_tile.dart';
-import 'package:unplash_sample/dependency_injection.dart';
-import 'package:unplash_sample/features/home/domain/usecases/fetch_images.dart';
-import 'package:unplash_sample/features/home/presentation/bloc/unsplash_image_bloc.dart';
-import 'package:unplash_sample/features/home/presentation/widgets/image_gridview_widget.dart';
+import 'package:unsplash_sample/core/analytics/mixpanel_config.dart';
+import 'package:unsplash_sample/core/config/unleash_config.dart';
+import 'package:unsplash_sample/core/widgets/error_tile.dart';
+import 'package:unsplash_sample/features/home/domain/usecases/fetch_images.dart';
+import 'package:unsplash_sample/features/home/presentation/bloc/unsplash_image_bloc.dart';
+import 'package:unsplash_sample/features/home/presentation/widgets/image_gridview_widget.dart';
+import 'package:unsplash_sample/service_locator.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    bloc = DependencyInjection.getIt<UnsplashImageBloc>();
+    bloc = ServiceLocator.getIt<UnsplashImageBloc>();
     controller = ScrollController();
     controller.addListener(_onScroll);
     _fetchImageEvent();
@@ -33,8 +33,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _trackLikeExperimentationVariant() {
-    final unleashConfig = DependencyInjection.getIt<UnleashConfig>();
-    final mixpanelConfig = DependencyInjection.getIt<MixpanelConfig>();
+    final unleashConfig = ServiceLocator.getIt<UnleashConfig>();
+    final mixpanelConfig = ServiceLocator.getIt<MixpanelConfig>();
     if (unleashConfig.isLikeOptionExperimentEnabled) {
       mixpanelConfig.trackLikeVariant(unleashConfig.likeButtonPosition);
     }

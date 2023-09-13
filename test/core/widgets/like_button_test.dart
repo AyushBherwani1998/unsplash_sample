@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:unplash_sample/core/analytics/mixpanel_config.dart';
-import 'package:unplash_sample/core/config/unleash_config.dart';
-import 'package:unplash_sample/core/widgets/like_button.dart';
+import 'package:unsplash_sample/core/analytics/mixpanel_config.dart';
+import 'package:unsplash_sample/core/config/unleash_config.dart';
+import 'package:unsplash_sample/core/widgets/like_button.dart';
 
-import '../../mock_dependency_injection.dart';
+import '../../service_locator_mock.dart';
 
 void main() {
   group('Like button test', () {
@@ -26,8 +26,8 @@ void main() {
     }
 
     setUpAll(() {
-      MockDependencyInjection.initialize();
-      mixpanelConfig = MockDependencyInjection.getIt<MixpanelConfig>();
+      SerivceLocatorMock.initialize();
+      mixpanelConfig = SerivceLocatorMock.getIt<MixpanelConfig>();
       isLikedNotifier = ValueNotifier<bool>(false);
     });
 

@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:unplash_sample/core/config/unleash_config.dart';
-import 'package:unplash_sample/dependency_injection.dart';
-import 'package:unplash_sample/features/home/domain/entities/image.dart';
-import 'package:unplash_sample/features/home/presentation/widgets/image_tile.dart';
+import 'package:unsplash_sample/core/config/unleash_config.dart';
+import 'package:unsplash_sample/features/home/domain/entities/image.dart';
+import 'package:unsplash_sample/features/home/presentation/widgets/image_tile.dart';
+import 'package:unsplash_sample/service_locator.dart';
 
 class ImageGridViewWidget extends StatelessWidget {
   final List<UnsplashImage> images;
@@ -18,7 +18,7 @@ class ImageGridViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final unleashConfig = DependencyInjection.getIt<UnleashConfig>();
+    final unleashConfig = ServiceLocator.getIt<UnleashConfig>();
     return CustomScrollView(
       controller: controller,
       slivers: [

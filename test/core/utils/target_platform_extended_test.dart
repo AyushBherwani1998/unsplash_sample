@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:unplash_sample/core/utils/target_platform_extended.dart';
-import 'package:unplash_sample/core/utils/web_platform_resolver.dart';
+import 'package:unsplash_sample/core/utils/target_platform_extended.dart';
+import 'package:unsplash_sample/core/utils/web_platform_resolver.dart';
 
-import '../../mock_dependency_injection.dart';
+import '../../service_locator_mock.dart';
 
 void main() {
   group('TargetPlatformExtended tests', () {
@@ -12,9 +12,8 @@ void main() {
     late final WebPlatformResolver webPlatformResolver;
 
     setUpAll(() {
-      MockDependencyInjection.initialize();
-      webPlatformResolver =
-          MockDependencyInjection.getIt<WebPlatformResolver>();
+      SerivceLocatorMock.initialize();
+      webPlatformResolver = SerivceLocatorMock.getIt<WebPlatformResolver>();
       targetPlatformExtended = TargetPlatformExtendedImpl(webPlatformResolver);
     });
 

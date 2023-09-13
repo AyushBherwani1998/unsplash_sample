@@ -1,6 +1,6 @@
 {
-    "name": "unplash_sample",
-    "short_name": "unplash_sample",
+    "name": "unsplash_sample",
+    "short_name": "unsplash_sample",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

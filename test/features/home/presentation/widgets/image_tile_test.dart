@@ -3,22 +3,22 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:unplash_sample/core/config/unleash_config.dart';
-import 'package:unplash_sample/features/home/data/models/image_model.dart';
-import 'package:unplash_sample/features/home/presentation/widgets/image_tile.dart';
-import 'package:unplash_sample/features/home/presentation/widgets/image_tile_footer.dart';
-import 'package:unplash_sample/features/home/presentation/widgets/image_tile_header.dart';
+import 'package:unsplash_sample/core/config/unleash_config.dart';
+import 'package:unsplash_sample/features/home/data/models/image_model.dart';
+import 'package:unsplash_sample/features/home/presentation/widgets/image_tile.dart';
+import 'package:unsplash_sample/features/home/presentation/widgets/image_tile_footer.dart';
+import 'package:unsplash_sample/features/home/presentation/widgets/image_tile_header.dart';
 
 import '../../../../fixtures/fixture_reader.dart';
-import '../../../../mock_dependency_injection.dart';
+import '../../../../service_locator_mock.dart';
 
 void main() {
   late final UnsplashImageListModel unsplashImageListModel;
   late final UnleashConfig unleashConfig;
 
   setUpAll(() {
-    MockDependencyInjection.initialize();
-    unleashConfig = MockDependencyInjection.getIt<UnleashConfig>();
+    SerivceLocatorMock.initialize();
+    unleashConfig = SerivceLocatorMock.getIt<UnleashConfig>();
     unsplashImageListModel =
         UnsplashImageListModel.fromJson(List<Map<String, dynamic>>.from(
       jsonDecode(fixture('image_model_fixture.json')) as List,

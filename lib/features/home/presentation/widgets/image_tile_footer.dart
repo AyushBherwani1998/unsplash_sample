@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:unplash_sample/core/config/unleash_config.dart';
-import 'package:unplash_sample/core/widgets/like_button.dart';
-import 'package:unplash_sample/features/home/domain/entities/image.dart';
+import 'package:unsplash_sample/core/config/unleash_config.dart';
+import 'package:unsplash_sample/core/widgets/like_button.dart';
+import 'package:unsplash_sample/features/home/domain/entities/image.dart';
 
 class ImageTileFooter extends StatefulWidget {
   final UnsplashImage image;

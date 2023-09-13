@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:unleash_proxy_client_flutter/unleash_proxy_client_flutter.dart';
 import 'package:unleash_proxy_client_flutter/variant.dart';
-import 'package:unplash_sample/core/config/unleash_config.dart';
+import 'package:unsplash_sample/core/config/unleash_config.dart';
 
 import '../mocks/unleash_mock.dart';
 
