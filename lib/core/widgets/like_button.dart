@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:unplash_sample/core/analytics/mixpanel_config.dart';
-import 'package:unplash_sample/core/config/unleash_config.dart';
-import 'package:unplash_sample/dependency_injection.dart';
+import 'package:unsplash_sample/core/analytics/mixpanel_config.dart';
+import 'package:unsplash_sample/core/config/unleash_config.dart';
+import 'package:unsplash_sample/service_locator.dart';
 
 class LikeButton extends StatelessWidget {
   final ValueNotifier<bool> isLikedNotifier;
@@ -17,7 +17,7 @@ class LikeButton extends StatelessWidget {
   });
 
   void _fireMixpanelEvent() {
-    final mixpanelConfig = DependencyInjection.getIt<MixpanelConfig>();
+    final mixpanelConfig = ServiceLocator.getIt<MixpanelConfig>();
     mixpanelConfig.trackLikeEventForExperimentation(
       likeButtonPosition: likeButtonPosition,
       photoId: photoId,

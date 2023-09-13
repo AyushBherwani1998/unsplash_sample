@@ -4,18 +4,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:unplash_sample/core/config/unleash_config.dart';
-import 'package:unplash_sample/core/utils/string_constants.dart';
-import 'package:unplash_sample/core/widgets/error_tile.dart';
-import 'package:unplash_sample/core/widgets/like_button.dart';
-import 'package:unplash_sample/features/image_details/data/models/image_details_model.dart';
-import 'package:unplash_sample/features/image_details/presentation/bloc/image_details_bloc.dart';
-import 'package:unplash_sample/features/image_details/presentation/pages/image_details_page.dart';
-import 'package:unplash_sample/features/image_details/presentation/widgets/image_details_widget.dart';
+import 'package:unsplash_sample/core/config/unleash_config.dart';
+import 'package:unsplash_sample/core/utils/string_constants.dart';
+import 'package:unsplash_sample/core/widgets/error_tile.dart';
+import 'package:unsplash_sample/core/widgets/like_button.dart';
+import 'package:unsplash_sample/features/image_details/data/models/image_details_model.dart';
+import 'package:unsplash_sample/features/image_details/presentation/bloc/image_details_bloc.dart';
+import 'package:unsplash_sample/features/image_details/presentation/pages/image_details_page.dart';
+import 'package:unsplash_sample/features/image_details/presentation/widgets/image_details_widget.dart';
 
 import '../../../../core/mocks/image_details_bloc_mock.dart';
 import '../../../../fixtures/fixture_reader.dart';
-import '../../../../mock_dependency_injection.dart';
+import '../../../../service_locator_mock.dart';
 
 void main() {
   Widget pumpMaterialApp(Widget home) {
@@ -30,15 +30,15 @@ void main() {
 
     setUpAll(() {
       bloc = ImageDetailsBlocMock();
-      MockDependencyInjection.initialize(imageDetailsBloc: bloc);
-      unleashConfig = MockDependencyInjection.getIt<UnleashConfig>();
+      SerivceLocatorMock.initialize(imageDetailsBloc: bloc);
+      unleashConfig = SerivceLocatorMock.getIt<UnleashConfig>();
       when(() => unleashConfig.isLikeOptionExperimentEnabled).thenReturn(true);
       when(() => unleashConfig.likeButtonPosition)
           .thenReturn(LikeButtonPosition.imageDetails);
     });
 
     tearDownAll(() {
-      MockDependencyInjection.getIt.reset();
+      SerivceLocatorMock.getIt.reset();
     });
 
     testWidgets("should show ErrorTile on ImageDetailsErrorState",

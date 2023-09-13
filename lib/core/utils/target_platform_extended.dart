@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:unplash_sample/core/utils/web_platform_resolver.dart';
+import 'package:unsplash_sample/core/utils/web_platform_resolver.dart';
 
 abstract class TargetPlatformExtended {
   bool get isMobile;
@@ -28,4 +28,3 @@ class TargetPlatformExtendedImpl extends TargetPlatformExtended {
   @override
   bool get isWeb => webPlatformResolver.isWeb;
 }
-

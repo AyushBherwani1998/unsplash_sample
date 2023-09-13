@@ -2,13 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:unplash_sample/core/analytics/mixpanel_config.dart';
-import 'package:unplash_sample/core/config/unleash_config.dart';
-import 'package:unplash_sample/core/widgets/error_tile.dart';
-import 'package:unplash_sample/core/widgets/like_button.dart';
-import 'package:unplash_sample/dependency_injection.dart';
-import 'package:unplash_sample/features/image_details/presentation/bloc/image_details_bloc.dart';
-import 'package:unplash_sample/features/image_details/presentation/widgets/image_details_widget.dart';
+import 'package:unsplash_sample/core/analytics/mixpanel_config.dart';
+import 'package:unsplash_sample/core/config/unleash_config.dart';
+import 'package:unsplash_sample/core/widgets/error_tile.dart';
+import 'package:unsplash_sample/core/widgets/like_button.dart';
+import 'package:unsplash_sample/features/image_details/presentation/bloc/image_details_bloc.dart';
+import 'package:unsplash_sample/features/image_details/presentation/widgets/image_details_widget.dart';
+import 'package:unsplash_sample/service_locator.dart';
 
 @RoutePage()
 class ImageDetailsPage extends StatefulWidget {
@@ -32,10 +32,10 @@ class _ImageDetailsPageState extends State<ImageDetailsPage> {
   @override
   void initState() {
     super.initState();
-    bloc = DependencyInjection.getIt<ImageDetailsBloc>();
-    mixPanelConfig = DependencyInjection.getIt<MixpanelConfig>();
+    bloc = ServiceLocator.getIt<ImageDetailsBloc>();
+    mixPanelConfig = ServiceLocator.getIt<MixpanelConfig>();
     isLikedNotifier = ValueNotifier<bool>(false);
-    unleashConfig = DependencyInjection.getIt<UnleashConfig>();
+    unleashConfig = ServiceLocator.getIt<UnleashConfig>();
     _trackEvent();
     _fetchImageDetails();
   }

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:unplash_sample/core/utils/string_constants.dart';
-import 'package:unplash_sample/features/image_details/data/models/image_details_model.dart';
+import 'package:unsplash_sample/core/utils/string_constants.dart';
+import 'package:unsplash_sample/features/image_details/data/models/image_details_model.dart';
 
 abstract class ImageDetailsRemoteDataSource {
   Future<ImageDetailsModel> fetchImageDetails(String id);

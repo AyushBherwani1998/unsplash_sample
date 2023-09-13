@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:unplash_sample/features/home/domain/usecases/fetch_images.dart';
-import 'package:unplash_sample/features/home/presentation/bloc/unsplash_image_bloc.dart';
+import 'package:unsplash_sample/features/home/domain/usecases/fetch_images.dart';
+import 'package:unsplash_sample/features/home/presentation/bloc/unsplash_image_bloc.dart';
 
 void main() {
   test('Validate FetchImageEvent equality', () {

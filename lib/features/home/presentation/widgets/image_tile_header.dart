@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-import 'package:unplash_sample/dependency_injection.dart';
-import 'package:unplash_sample/features/home/domain/entities/image.dart';
+import 'package:unsplash_sample/features/home/domain/entities/image.dart';
+import 'package:unsplash_sample/service_locator.dart';
 
 class ImageTileHeader extends StatelessWidget {
   final UnsplashImage image;
@@ -14,7 +14,7 @@ class ImageTileHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         CachedNetworkImage(
-          cacheManager: DependencyInjection.getIt<DefaultCacheManager>(),
+          cacheManager: ServiceLocator.getIt<DefaultCacheManager>(),
           imageUrl: image.profileImage,
           imageBuilder: (context, provider) {
             return Container(

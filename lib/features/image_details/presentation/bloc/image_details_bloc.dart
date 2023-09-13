@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:unplash_sample/core/utils/string_constants.dart';
-import 'package:unplash_sample/features/image_details/domain/entities/image_details.dart';
-import 'package:unplash_sample/features/image_details/domain/usecases/fetch_image_details.dart';
+import 'package:unsplash_sample/core/utils/string_constants.dart';
+import 'package:unsplash_sample/features/image_details/domain/entities/image_details.dart';
+import 'package:unsplash_sample/features/image_details/domain/usecases/fetch_image_details.dart';
 
 part 'image_details_event.dart';
 part 'image_details_state.dart';

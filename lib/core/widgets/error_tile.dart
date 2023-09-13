@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:unplash_sample/core/utils/string_constants.dart';
+import 'package:unsplash_sample/core/utils/string_constants.dart';
 
 class ErrorTile extends StatelessWidget {
   final VoidCallback onTap;

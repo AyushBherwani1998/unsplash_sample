@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:unplash_sample/features/home/data/models/image_model.dart';
-import 'package:unplash_sample/features/home/domain/entities/image.dart';
+import 'package:unsplash_sample/features/home/data/models/image_model.dart';
+import 'package:unsplash_sample/features/home/domain/entities/image.dart';
 
 import '../../../../fixtures/fixture_reader.dart';
 

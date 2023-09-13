@@ -1,4 +1,4 @@
-package com.example.unplash_sample
+package com.example.unsplash_sample
 
 import io.flutter.embedding.android.FlutterActivity
 

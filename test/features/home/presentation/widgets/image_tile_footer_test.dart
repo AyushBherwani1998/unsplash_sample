@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:unplash_sample/core/widgets/like_button.dart';
-import 'package:unplash_sample/features/home/data/models/image_model.dart';
-import 'package:unplash_sample/features/home/domain/entities/image.dart';
-import 'package:unplash_sample/features/home/presentation/widgets/image_tile_footer.dart';
+import 'package:unsplash_sample/core/widgets/like_button.dart';
+import 'package:unsplash_sample/features/home/data/models/image_model.dart';
+import 'package:unsplash_sample/features/home/domain/entities/image.dart';
+import 'package:unsplash_sample/features/home/presentation/widgets/image_tile_footer.dart';
 
 import '../../../../fixtures/fixture_reader.dart';
 

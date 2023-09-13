@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:unplash_sample/core/routes/auto_router.dart';
-import 'package:unplash_sample/dependency_injection.dart';
+import 'package:unsplash_sample/core/routes/auto_router.dart';
+import 'package:unsplash_sample/service_locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: "./lib/core/.env");
-  await DependencyInjection.initialize();
+  await ServiceLocator.initialize();
   runApp(const MyApp());
 }
 
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      routerConfig: DependencyInjection.getIt<UnsplashSampleRouter>().config(),
+      routerConfig: ServiceLocator.getIt<UnsplashSampleRouter>().config(),
     );
   }
 }

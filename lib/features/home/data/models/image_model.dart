@@ -1,4 +1,4 @@
-import 'package:unplash_sample/features/home/domain/entities/image.dart';
+import 'package:unsplash_sample/features/home/domain/entities/image.dart';
 
 class UnsplashImageListModel extends UnsplashImageList {
   const UnsplashImageListModel(super.images);
