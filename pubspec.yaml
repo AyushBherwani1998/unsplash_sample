@@ -12,7 +12,7 @@ dependencies:
   auto_route: ^7.8.3
   bloc: ^8.1.2
   bloc_concurrency: ^0.2.2
-  cached_network_image: ^3.2.3
+  cached_network_image: ^3.3.0
   dartz: ^0.10.1
   dio: ^5.3.2
   equatable: ^2.0.5
