@@ -39,7 +39,7 @@ dev_dependencies:
   bloc_test: ^9.1.4
   build_runner: ^2.4.6
   change_app_package_name: ^1.1.0
-  flutter_lints: ^3.0.0
+  flutter_lints: ^3.0.1
   file: ^6.0.0
 
 flutter:
